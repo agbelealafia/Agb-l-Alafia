@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cabinet Agbélé - Alafia | Santé &amp; Fertilité Naturelle</title>
+<meta name="description" content="Cabinet Agbélé-Alafia à Cotonou : compléments nutritionnels naturels pour la fertilité, le diabète, la prostate, l'hypertension et les infections.">
+
+<style>
+/* ==========================================================================
+   1. JETONS DE DESIGN (Design tokens)
+   ========================================================================== */
+:root{
+  --green-deep:   #1B4332;
+  --green-mid:    #4C7A63;
+  --green-soft:   #7FA88B;
+  --green-pale:   #EAF2E7;
+  --gold-root:    #B9884C;
+  --gold-root-soft:#E4CFA8;
+  --bg:           #FCFDFA;
+  --paper:        #FFFFFF;
+  --text:         #1C2A21;
+  --text-soft:    #4E5F55;
+  --text-invert:  #F3F7F1;
+  --border-soft:  rgba(27,67,50,0.12);
+  --shadow-soft:  0 18px 40px -22px rgba(27,67,50,0.35);
+  --shadow-card:  0 10px 30px -16px rgba(27,67,50,0.25);
+
+  --font-display: Georgia,'Iowan Old Style','Palatino Linotype',Palatino,'Times New Roman',serif;
+  --font-body: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+
+  --container: 1120px;
+  --radius-lg: 22px;
+  --radius-md: 14px;
+  --radius-sm: 8px;
+}
+
+/* ==========================================================================
+   2. RÉINITIALISATION & BASE
+   ========================================================================== */
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  *,*::before,*::after{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important; }
+}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-body);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{ max-width:100%; display:block; }
+a{ color:inherit; text-decoration:none; }
+h1,h2,h3{ font-family:var(--font-display); color:var(--green-deep); margin:0 0 .5em; font-weight:700; line-height:1.15; }
+p{ margin:0 0 1em; }
+ul{ margin:0; padding:0; list-style:none; }
+button{ font-family:inherit; }
+:focus-visible{ outline:3px solid var(--gold-root); outline-offset:3px; border-radius:4px; }
+
+.container{ max-width:var(--container); margin:0 auto; padding:0 24px; }
+.eyebrow{
+  font-family:var(--font-body);
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  font-size:.78rem;
+  font-weight:700;
+  color:var(--gold-root);
+  margin:0 0 .9em;
+}
+.section-intro{ max-width:640px; color:var(--text-soft); font-size:1.05rem; }
+.visually-hidden{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+
+/* ==========================================================================
+   3. MOTIF SIGNATURE — brindille de feuilles (repris du logo)
+   ========================================================================== */
+.sprig{ color:var(--gold-root); }
+.divider{
+  display:flex; align-items:center; justify-content:center;
+  padding:10px 0;
+  background:var(--bg);
+}
+.divider svg{ width:150px; height:34px; opacity:.85; }
+.divider.on-pale{ background:var(--green-pale); }
+.divider.on-deep{ background:var(--green-deep); }
+.divider.on-deep svg{ color:var(--gold-root-soft); }
+
+/* ==========================================================================
+   4. EN-TÊTE
+   ========================================================================== */
+.site-header{
+  position:sticky; top:0; z-index:50;
+  background:rgba(252,253,250,0.92);
+  backdrop-filter:saturate(160%) blur(10px);
+  border-bottom:1px solid var(--border-soft);
+}
+.header-inner{
+  max-width:var(--container); margin:0 auto; padding:12px 24px;
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+}
+.brand{ display:flex; align-items:center; gap:12px; }
+.brand-logo{
+  width:44px; height:44px; border-radius:50%;
+  background:#fff; padding:3px;
+  box-shadow:0 0 0 2px var(--green-pale);
+  object-fit:cover;
+}
+.brand-name{ font-family:var(--font-display); font-size:1.12rem; font-weight:700; color:var(--green-deep); }
+
+.nav-toggle{
+  display:none; flex-direction:column; justify-content:center; gap:5px;
+  width:40px; height:40px; background:none; border:none; cursor:pointer; border-radius:8px;
+}
+.nav-toggle span{ display:block; width:22px; height:2px; background:var(--green-deep); margin:0 auto; transition:transform .25s ease, opacity .25s ease; }
+.nav-toggle[aria-expanded="true"] span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2){ opacity:0; }
+.nav-toggle[aria-expanded="true"] span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+
+.site-nav{ display:flex; align-items:center; gap:28px; }
+.site-nav a{
+  font-size:.95rem; font-weight:600; color:var(--text-soft);
+  padding:6px 2px; border-bottom:2px solid transparent; transition:color .2s ease, border-color .2s ease;
+}
+.site-nav a:hover, .site-nav a.active{ color:var(--green-deep); border-color:var(--gold-root); }
+.site-nav a.nav-cta{
+  background:var(--green-deep); color:var(--text-invert); border:none;
+  padding:9px 18px; border-radius:999px; font-weight:700;
+}
+.site-nav a.nav-cta:hover{ background:var(--green-mid); border-color:transparent; }
+
+/* ==========================================================================
+   5. HÉRO
+   ========================================================================== */
+.hero{ position:relative; overflow:hidden; padding:64px 0 88px; }
+.hero-blob{
+  position:absolute; z-index:0; top:-160px; right:-180px;
+  width:560px; height:560px; border-radius:42% 58% 63% 37% / 45% 40% 60% 55%;
+  background:radial-gradient(circle at 35% 30%, var(--green-pale), transparent 70%),
+             radial-gradient(circle at 70% 70%, var(--gold-root-soft), transparent 60%);
+  opacity:.7; pointer-events:none;
+}
+.hero-inner{
+  position:relative; z-index:1; max-width:var(--container); margin:0 auto; padding:0 24px;
+  display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center;
+}
+.hero-copy h1{ font-size:clamp(2rem,4.2vw,2.9rem); }
+.hero-text{ color:var(--text-soft); font-size:1.08rem; max-width:520px; }
+.btn{
+  display:inline-flex; align-items:center; gap:10px;
+  padding:14px 26px; border-radius:999px; font-weight:700; font-size:.98rem;
+  transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+  box-shadow:var(--shadow-card);
+}
+.btn-primary{ background:var(--green-deep); color:var(--text-invert); }
+.btn-primary:hover{ background:var(--green-mid); transform:translateY(-2px); box-shadow:var(--shadow-soft); }
+.btn-primary::after{ content:"→"; }
+
+.hero-media-frame{
+  position:relative; border-radius:var(--radius-lg); overflow:hidden;
+  box-shadow:var(--shadow-soft); aspect-ratio:4/5;
+}
+.hero-media-frame img{ width:100%; height:100%; object-fit:cover; }
+.hero-media-frame::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(27,67,50,.55) 0%, rgba(27,67,50,.05) 26%, rgba(27,67,50,0) 45%);
+  pointer-events:none;
+}
+
+/* ==========================================================================
+   6. SECTIONS GÉNÉRIQUES & CARTES
+   ========================================================================== */
+section{ padding:76px 0; }
+.on-pale{ background:var(--green-pale); }
+.section-head{ margin-bottom:44px; }
+
+.card-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:26px; margin-top:36px; }
+.card{
+  background:var(--paper); border:1px solid var(--border-soft); border-radius:var(--radius-md);
+  padding:30px 26px; box-shadow:var(--shadow-card);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.card:hover{ transform:translateY(-4px); box-shadow:var(--shadow-soft); }
+.card-icon{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:56px; height:56px; border-radius:50%; font-size:1.6rem;
+  background:var(--green-pale); box-shadow:0 0 0 4px var(--gold-root-soft) inset;
+  margin-bottom:18px;
+}
+.card h3{ font-size:1.18rem; margin-bottom:.4em; }
+.card p{ color:var(--text-soft); font-size:.98rem; margin:0; }
+
+/* Bloc décoratif "nature" dans la section Solutions */
+.solutions-visual{
+  display:flex; justify-content:center; margin:8px 0 -6px;
+}
+.solutions-visual img{
+  width:130px; height:130px; mix-blend-mode:multiply; opacity:.92;
+}
+
+/* ==========================================================================
+   7. FERTILITÉ
+   ========================================================================== */
+.fertilite-grid{
+  display:grid; grid-template-columns:.85fr 1.15fr; gap:52px; align-items:center; margin-top:20px;
+}
+.fertilite-media{
+  border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-card);
+  aspect-ratio:4/5; position:relative;
+}
+.fertilite-media img{ width:100%; height:100%; object-fit:cover; }
+.fertilite-media::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(27,67,50,.5) 0%, rgba(27,67,50,.04) 24%, rgba(27,67,50,0) 42%);
+}
+.fertilite-columns{ display:grid; grid-template-columns:1fr auto 1fr; gap:28px; align-items:start; }
+.fertilite-col h3{
+  font-size:1.05rem; text-transform:uppercase; letter-spacing:.06em;
+  color:var(--gold-root); font-family:var(--font-body); font-weight:700;
+}
+.fertilite-col p{ color:var(--text-soft); font-size:.98rem; }
+.fertilite-sep{ width:1px; background:linear-gradient(var(--border-soft),var(--gold-root-soft),var(--border-soft)); height:100%; }
+
+/* ==========================================================================
+   8. CONTACT
+   ========================================================================== */
+.contact-grid{ display:grid; grid-template-columns:1.1fr .9fr; gap:40px; margin-top:36px; align-items:start; }
+.contact-info{
+  background:var(--paper); border:1px solid var(--border-soft); border-radius:var(--radius-md);
+  box-shadow:var(--shadow-card); overflow:hidden;
+}
+.contact-row{
+  display:flex; align-items:center; gap:14px; padding:17px 22px;
+  border-bottom:1px solid var(--border-soft); font-weight:600; font-size:.98rem;
+  transition:background .2s ease;
+}
+.contact-row:last-child{ border-bottom:none; }
+a.contact-row:hover{ background:var(--green-pale); }
+.contact-row .ico{ font-size:1.15rem; flex-shrink:0; }
+.contact-address{ align-items:flex-start; font-weight:500; color:var(--text-soft); }
+
+.delivery-banner{
+  background:linear-gradient(135deg, var(--gold-root), #a97740);
+  color:#fff; border-radius:var(--radius-md); padding:26px 24px;
+  font-weight:700; font-size:1.05rem; box-shadow:var(--shadow-card);
+  display:flex; align-items:center; gap:14px;
+}
+.delivery-banner .ico{ font-size:1.7rem; }
+.fb-btn{
+  margin-top:16px; display:inline-flex; align-items:center; gap:8px;
+  color:var(--green-deep); font-weight:700; border-bottom:2px solid var(--gold-root);
+  padding-bottom:2px;
+}
+
+/* ==========================================================================
+   9. PIED DE PAGE
+   ========================================================================== */
+.site-footer{
+  background:var(--green-deep); color:var(--text-invert);
+  padding:48px 0 30px; text-align:center;
+}
+.footer-logo{
+  width:56px; height:56px; border-radius:50%; margin:0 auto 14px;
+  background:#fff; padding:4px;
+}
+.site-footer p{ margin:0 0 .4em; }
+.footer-text{ font-family:var(--font-display); font-size:1.15rem; }
+.footer-legal{ opacity:.7; font-size:.85rem; margin-top:14px; }
+
+/* ==========================================================================
+   10. RÉVÉLATION AU DÉFILEMENT
+   ========================================================================== */
+.reveal{ opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease; }
+.reveal.is-visible{ opacity:1; transform:translateY(0); }
+@media (prefers-reduced-motion: reduce){
+  .reveal{ opacity:1; transform:none; transition:none; }
+}
+
+/* ==========================================================================
+   11. RESPONSIVE
+   ========================================================================== */
+@media (max-width: 880px){
+  .hero-inner{ grid-template-columns:1fr; gap:36px; }
+  .hero-media-frame{ aspect-ratio:16/10; order:-1; }
+  .fertilite-grid{ grid-template-columns:1fr; }
+  .fertilite-media{ aspect-ratio:16/10; }
+  .fertilite-columns{ grid-template-columns:1fr; }
+  .fertilite-sep{ width:100%; height:1px; background:linear-gradient(90deg,var(--border-soft),var(--gold-root-soft),var(--border-soft)); }
+  .card-grid{ grid-template-columns:1fr 1fr; }
+  .contact-grid{ grid-template-columns:1fr; }
+}
+@media (max-width: 640px){
+  .nav-toggle{ display:flex; }
+  .site-nav{
+    position:absolute; top:100%; left:0; right:0;
+    background:var(--paper); border-bottom:1px solid var(--border-soft);
+    flex-direction:column; align-items:stretch; gap:0;
+    max-height:0; overflow:hidden; transition:max-height .3s ease;
+  }
+  .site-nav.open{ max-height:340px; }
+  .site-nav a{ padding:16px 24px; border-bottom:1px solid var(--border-soft); border-radius:0; }
+  .site-nav a.nav-cta{ margin:14px 24px; text-align:center; }
+  .card-grid{ grid-template-columns:1fr; }
+  section{ padding:56px 0; }
+  .hero{ padding:44px 0 60px; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#accueil" class="brand">
+      <img src="images/logo.jpg" alt="Logo Cabinet Agbélé-Alafia" class="brand-logo">
+      <span class="brand-name" id="brand-name">Cabinet Agbélé - Alafia</span>
+    </a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="site-nav">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="site-nav">
+      <a href="#accueil" data-nav="accueil" id="nav-accueil">Accueil</a>
+      <a href="#solutions" data-nav="solutions" id="nav-solutions">Nos Solutions</a>
+      <a href="#fertilite" data-nav="fertilite" id="nav-fertilite">Fertilité</a>
+      <a href="#infections" data-nav="infections" id="nav-infections">Infections</a>
+      <a href="#contact" data-nav="contact" id="nav-contact" class="nav-cta">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section id="accueil" class="hero">
+    <div class="hero-blob" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <div class="hero-copy reveal">
+        <p class="eyebrow" id="hero-eyebrow">Santé naturelle · Cotonou</p>
+        <h1 id="hero-title">Santé - Fertilité chez la femme et l'homme</h1>
+        <p class="hero-text" id="hero-text"></p>
+        <a href="#solutions" class="btn btn-primary" id="hero-cta">Nos Solutions Naturelles</a>
+      </div>
+      <div class="hero-media reveal">
+        <div class="hero-media-frame">
+          <img src="images/fertilite.jpg" alt="Couple souriant accompagné par Agbélé-Alafia dans son projet de famille" id="hero-image">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true">
+    <svg class="sprig" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6 20 Q40 4 60 20 Q80 36 114 20" stroke="currentColor" stroke-width="1.4"/>
+      <path d="M28 14 Q33 7 40 8 Q35 15 28 14Z" fill="currentColor"/>
+      <path d="M56 27 Q51 33 44 32 Q49 25 56 27Z" fill="currentColor"/>
+      <path d="M78 13 Q83 6 90 7 Q85 14 78 13Z" fill="currentColor"/>
+      <path d="M92 25 Q97 31 103 29 Q98 23 92 25Z" fill="currentColor"/>
+    </svg>
+  </div>
+
+  <section id="solutions" class="solutions">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow" id="solutions-eyebrow">Nos solutions</p>
+        <h2 id="solutions-title">Pourquoi choisir Agbélé-Alafia ?</h2>
+        <p class="section-intro" id="solutions-intro"></p>
+      </div>
+      <div class="solutions-visual reveal" aria-hidden="true">
+        <img src="images/nature.jpg" alt="">
+      </div>
+      <div class="card-grid">
+        <article class="card reveal">
+          <span class="card-icon" id="sol-icon-1">🌿</span>
+          <h3 id="sol-title-1">Soutien Naturel Ciblé</h3>
+          <p id="sol-text-1"></p>
+        </article>
+        <article class="card reveal">
+          <span class="card-icon" id="sol-icon-2">✨</span>
+          <h3 id="sol-title-2">Patrimoine et Efficacité</h3>
+          <p id="sol-text-2"></p>
+        </article>
+        <article class="card reveal">
+          <span class="card-icon" id="sol-icon-3">💪</span>
+          <h3 id="sol-title-3">La Force de la Racine</h3>
+          <p id="sol-text-3"></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider on-pale" aria-hidden="true">
+    <svg class="sprig" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6 20 Q40 4 60 20 Q80 36 114 20" stroke="currentColor" stroke-width="1.4"/>
+      <path d="M28 14 Q33 7 40 8 Q35 15 28 14Z" fill="currentColor"/>
+      <path d="M56 27 Q51 33 44 32 Q49 25 56 27Z" fill="currentColor"/>
+      <path d="M78 13 Q83 6 90 7 Q85 14 78 13Z" fill="currentColor"/>
+      <path d="M92 25 Q97 31 103 29 Q98 23 92 25Z" fill="currentColor"/>
+    </svg>
+  </div>
+
+  <section id="fertilite" class="fertilite on-pale">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow" id="fert-eyebrow">Fertilité</p>
+        <h2 id="fert-title">Votre chemin vers la parentalité commence ici !</h2>
+      </div>
+      <div class="fertilite-grid">
+        <div class="fertilite-media reveal">
+          <img src="images/fertilite.jpg" alt="Couple souriant, accompagnement fertilité Agbélé-Alafia">
+        </div>
+        <div class="fertilite-columns reveal">
+          <div class="fertilite-col">
+            <h3 id="fert-femme-title">Pour Madame</h3>
+            <p id="fert-femme-text"></p>
+          </div>
+          <div class="fertilite-sep" aria-hidden="true"></div>
+          <div class="fertilite-col">
+            <h3 id="fert-homme-title">Pour Monsieur</h3>
+            <p id="fert-homme-text"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true">
+    <svg class="sprig" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6 20 Q40 4 60 20 Q80 36 114 20" stroke="currentColor" stroke-width="1.4"/>
+      <path d="M28 14 Q33 7 40 8 Q35 15 28 14Z" fill="currentColor"/>
+      <path d="M56 27 Q51 33 44 32 Q49 25 56 27Z" fill="currentColor"/>
+      <path d="M78 13 Q83 6 90 7 Q85 14 78 13Z" fill="currentColor"/>
+      <path d="M92 25 Q97 31 103 29 Q98 23 92 25Z" fill="currentColor"/>
+    </svg>
+  </div>
+
+  <section id="infections" class="infections">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow" id="infections-eyebrow">Infections</p>
+        <h2 id="infections-title">Agbélé-Alafia Infections : Votre Bouclier Naturel</h2>
+        <p class="section-intro" id="infections-intro"></p>
+      </div>
+      <div class="card-grid">
+        <article class="card reveal">
+          <span class="card-icon" id="inf-icon-1">🎯</span>
+          <h3 id="inf-title-1">Action Ciblée</h3>
+          <p id="inf-text-1"></p>
+        </article>
+        <article class="card reveal">
+          <span class="card-icon" id="inf-icon-2">🌿</span>
+          <h3 id="inf-title-2">Force Naturelle</h3>
+          <p id="inf-text-2"></p>
+        </article>
+        <article class="card reveal">
+          <span class="card-icon" id="inf-icon-3">🌸</span>
+          <h3 id="inf-title-3">Bien-être Retrouvé</h3>
+          <p id="inf-text-3"></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider on-deep" aria-hidden="true">
+    <svg class="sprig" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6 20 Q40 4 60 20 Q80 36 114 20" stroke="currentColor" stroke-width="1.4"/>
+      <path d="M28 14 Q33 7 40 8 Q35 15 28 14Z" fill="currentColor"/>
+      <path d="M56 27 Q51 33 44 32 Q49 25 56 27Z" fill="currentColor"/>
+      <path d="M78 13 Q83 6 90 7 Q85 14 78 13Z" fill="currentColor"/>
+      <path d="M92 25 Q97 31 103 29 Q98 23 92 25Z" fill="currentColor"/>
+    </svg>
+  </div>
+
+  <section id="contact" class="contact" style="background:var(--green-deep); color:var(--text-invert);">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow" id="contact-eyebrow">Contact</p>
+        <h2 id="contact-title" style="color:var(--text-invert);">Contactez-nous et Commandez</h2>
+        <p class="section-intro" id="contact-intro" style="color:#CFE0D6;"></p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <a class="contact-row" id="contact-phone1-link" href="tel:">
+            <span class="ico">📞</span><span id="contact-phone1"></span>
+          </a>
+          <a class="contact-row" id="contact-phone2-link" href="tel:">
+            <span class="ico">📞</span><span id="contact-phone2"></span>
+          </a>
+          <a class="contact-row" id="contact-whatsapp-link" href="https://wa.me/" target="_blank" rel="noopener">
+            <span class="ico">💬</span><span>WhatsApp : <span id="contact-whatsapp"></span></span>
+          </a>
+          <a class="contact-row" id="contact-email-link" href="mailto:">
+            <span class="ico">📧</span><span id="contact-email"></span>
+          </a>
+          <div class="contact-row contact-address">
+            <span class="ico">📍</span><span id="contact-address"></span>
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="delivery-banner">
+            <span class="ico">🚚</span><span id="contact-delivery"></span>
+          </div>
+          <a class="fb-btn" id="contact-fb-link" href="#" target="_blank" rel="noopener" style="color:#fff; border-color:var(--gold-root);">
+            Visitez notre page Facebook →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <img src="images/logo.jpg" alt="Logo Cabinet Agbélé-Alafia" class="footer-logo">
+  <p class="footer-text" id="footer-text">Cabinet Agbélé-Alafia : Pour que la vie continue.</p>
+  <p class="footer-legal" id="footer-legal">© 2026 Cabinet Agbélé - Alafia. Tous droits réservés.</p>
+</footer>
+
+<script>
+/* ==========================================================================
+   CONTENU PAR DÉFAUT — utilisé uniquement si data.json est introuvable
+   (par ex. si le fichier est ouvert directement depuis l'ordinateur au lieu
+   d'être servi par GitHub Pages). Sur GitHub Pages, data.json est TOUJOURS
+   utilisé en priorité.
+   ========================================================================== */
+const DEFAULT_DATA = {
+  siteTitle:"Cabinet Agbélé - Alafia",
+  nav:{accueil:"Accueil",solutions:"Nos Solutions",fertilite:"Fertilité",infections:"Infections",contact:"Contact"},
+  hero:{eyebrow:"Santé naturelle · Cotonou",title:"Santé - Fertilité chez la femme et l'homme",
+    text:"Découvrez notre approche naturelle pour soutenir votre bien-être face aux défis du Diabète, de la Prostate et de l'Hypertension Artérielle. Des compléments nutritionnels élaborés à partir de la puissance ancestrale des plantes et racines médicinales soigneusement sélectionnées.",
+    cta:"Nos Solutions Naturelles"},
+  solutions:{eyebrow:"Nos solutions",title:"Pourquoi choisir Agbélé-Alafia ?",
+    intro:"Profitez des bienfaits profonds et concentrés des extraits de racines et de plantes pour une action synergique sur votre organisme.",
+    item1_icon:"🌿",item1_title:"Soutien Naturel Ciblé",item1_text:"Des formulations uniques conçues pour aider à maintenir l'équilibre glycémique, le confort urinaire masculin et une tension artérielle saine.",
+    item2_icon:"✨",item2_title:"Patrimoine et Efficacité",item2_text:"Nous combinons la sagesse des remèdes traditionnels avec une sélection rigoureuse des meilleurs actifs naturels.",
+    item3_icon:"💪",item3_title:"La Force de la Racine",item3_text:"Pour une vie pleine de vitalité et de sérénité, faites confiance à Agbélé-Alafia."},
+  fertilite:{eyebrow:"Fertilité",title:"Votre chemin vers la parentalité commence ici !",
+    femme_title:"Pour Madame",femme_text:"Nous comprenons le désir d'avoir un enfant. Nos solutions soutiennent le cycle féminin, aident à régulariser et optimiser l'ovulation. Elles offrent un environnement sain et nourrissant pour la conception.",
+    homme_title:"Pour Monsieur",homme_text:"Messieurs, la fertilité n'est pas qu'une affaire de femme. Si vos résultats de spermogramme indiquent une faible quantité, un manque de mobilité ou une mauvaise qualité des spermatozoïdes, ne baissez pas les bras. Nos solutions naturelles et ciblées sont conçues pour revitaliser votre système reproducteur et booster vos chances de devenir père."},
+  infections:{eyebrow:"Infections",title:"Agbélé-Alafia Infections : Votre Bouclier Naturel",
+    intro:"Renforcez vos défenses pour une protection optimale ! Face aux agressions extérieures et aux infections récurrentes (urinaires, respiratoires, etc.), votre corps a besoin d'un soutien puissant et naturel.",
+    item1_icon:"🎯",item1_title:"Action Ciblée",item1_text:"Des extraits de racines et de plantes pour le soutien du système immunitaire et de purification.",
+    item2_icon:"🌿",item2_title:"Force Naturelle",item2_text:"Un concentré d'actifs pour combattre efficacement et prévenir la récidive.",
+    item3_icon:"🌸",item3_title:"Bien-être Retrouvé",item3_text:"Contribuez à l'équilibre et à l'harmonie interne de votre corps."},
+  contact:{eyebrow:"Contact",title:"Contactez-nous et Commandez",
+    intro:"Notre équipe est là pour vous accompagner sereinement vers votre projet de famille.",
+    phone1:"+229 01 57 35 36 35",phone2:"01 96 56 37 89",whatsapp:"57353635",email:"agbelealafia@gmail.com",
+    deliveryText:"Livraison possible ! Appelez le 0157353635.",
+    facebook:"https://www.facebook.com/profile.php?id=61557355948928",
+    address:"Agla, Rue Pharmacie des Archanges, 3ème maison à étages à gauche, Cotonou, Bénin, 00229"},
+  footer:{text:"Cabinet Agbélé-Alafia : Pour que la vie continue.",legal:"© 2026 Cabinet Agbélé - Alafia. Tous droits réservés."}
+};
+
+/* ==========================================================================
+   MOTEUR D'AFFICHAGE — injecte les données dans le HTML par identifiant
+   ========================================================================== */
+function setText(id, val){ const el=document.getElementById(id); if(el && val!=null && val!=="") el.textContent=val; }
+function setHref(id, val){ const el=document.getElementById(id); if(el && val) el.setAttribute('href', val); }
+function digits(str){ return (str||"").replace(/[^\d+]/g,""); }
+
+function renderSite(d){
+  try{
+    document.title = d.siteTitle + " | Santé & Fertilité Naturelle";
+    setText('brand-name', d.siteTitle);
+
+    setText('nav-accueil', d.nav.accueil);
+    setText('nav-solutions', d.nav.solutions);
+    setText('nav-fertilite', d.nav.fertilite);
+    setText('nav-infections', d.nav.infections);
+    setText('nav-contact', d.nav.contact);
+
+    setText('hero-eyebrow', d.hero.eyebrow);
+    setText('hero-title', d.hero.title);
+    setText('hero-text', d.hero.text);
+    setText('hero-cta', d.hero.cta);
+
+    setText('solutions-eyebrow', d.solutions.eyebrow);
+    setText('solutions-title', d.solutions.title);
+    setText('solutions-intro', d.solutions.intro);
+    setText('sol-icon-1', d.solutions.item1_icon); setText('sol-title-1', d.solutions.item1_title); setText('sol-text-1', d.solutions.item1_text);
+    setText('sol-icon-2', d.solutions.item2_icon); setText('sol-title-2', d.solutions.item2_title); setText('sol-text-2', d.solutions.item2_text);
+    setText('sol-icon-3', d.solutions.item3_icon); setText('sol-title-3', d.solutions.item3_title); setText('sol-text-3', d.solutions.item3_text);
+
+    setText('fert-eyebrow', d.fertilite.eyebrow);
+    setText('fert-title', d.fertilite.title);
+    setText('fert-femme-title', d.fertilite.femme_title);
+    setText('fert-femme-text', d.fertilite.femme_text);
+    setText('fert-homme-title', d.fertilite.homme_title);
+    setText('fert-homme-text', d.fertilite.homme_text);
+
+    setText('infections-eyebrow', d.infections.eyebrow);
+    setText('infections-title', d.infections.title);
+    setText('infections-intro', d.infections.intro);
+    setText('inf-icon-1', d.infections.item1_icon); setText('inf-title-1', d.infections.item1_title); setText('inf-text-1', d.infections.item1_text);
+    setText('inf-icon-2', d.infections.item2_icon); setText('inf-title-2', d.infections.item2_title); setText('inf-text-2', d.infections.item2_text);
+    setText('inf-icon-3', d.infections.item3_icon); setText('inf-title-3', d.infections.item3_title); setText('inf-text-3', d.infections.item3_text);
+
+    setText('contact-eyebrow', d.contact.eyebrow);
+    setText('contact-title', d.contact.title);
+    setText('contact-intro', d.contact.intro);
+    setText('contact-phone1', d.contact.phone1); setHref('contact-phone1-link', 'tel:' + digits(d.contact.phone1));
+    setText('contact-phone2', d.contact.phone2); setHref('contact-phone2-link', 'tel:' + digits(d.contact.phone2));
+    setText('contact-whatsapp', d.contact.whatsapp); setHref('contact-whatsapp-link', 'https://wa.me/229' + digits(d.contact.whatsapp).replace('+',''));
+    setText('contact-email', d.contact.email); setHref('contact-email-link', 'mailto:' + d.contact.email);
+    setText('contact-address', d.contact.address);
+    setText('contact-delivery', d.contact.deliveryText);
+    setHref('contact-fb-link', d.contact.facebook);
+
+    setText('footer-text', d.footer.text);
+    setText('footer-legal', d.footer.legal);
+  }catch(e){ console.error("Erreur d'affichage du contenu :", e); }
+}
+
+fetch('data.json', {cache:'no-store'})
+  .then(r => { if(!r.ok) throw new Error('data.json introuvable'); return r.json(); })
+  .then(data => renderSite(data))
+  .catch(() => renderSite(DEFAULT_DATA));
+
+/* ==========================================================================
+   MENU MOBILE
+   ========================================================================== */
+const navToggle = document.getElementById('nav-toggle');
+const siteNav = document.getElementById('site-nav');
+navToggle.addEventListener('click', () => {
+  const isOpen = siteNav.classList.toggle('open');
+  navToggle.setAttribute('aria-expanded', String(isOpen));
+});
+siteNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  siteNav.classList.remove('open');
+  navToggle.setAttribute('aria-expanded','false');
+}));
+
+/* ==========================================================================
+   RÉVÉLATION AU DÉFILEMENT + LIEN DE NAVIGATION ACTIF
+   ========================================================================== */
+const revealEls = document.querySelectorAll('.reveal');
+if('IntersectionObserver' in window){
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('is-visible'); revealObserver.unobserve(entry.target); } });
+  }, {threshold:0.15});
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  const navLinks = document.querySelectorAll('.site-nav a[data-nav]');
+  const sections = ['accueil','solutions','fertilite','infections','contact'].map(id => document.getElementById(id)).filter(Boolean);
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        navLinks.forEach(l => l.classList.toggle('active', l.dataset.nav === entry.target.id));
+      }
+    });
+  }, {rootMargin:'-45% 0px -50% 0px'});
+  sections.forEach(s => navObserver.observe(s));
+}else{
+  revealEls.forEach(el => el.classList.add('is-visible'));
+}
+</script>
+</body>
+</html>

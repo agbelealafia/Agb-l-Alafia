@@ -1,0 +1,75 @@
+{
+  "siteTitle": "Cabinet Agbélé - Alafia",
+
+  "nav": {
+    "accueil": "Accueil",
+    "solutions": "Nos Solutions",
+    "fertilite": "Fertilité",
+    "infections": "Infections",
+    "contact": "Contact"
+  },
+
+  "hero": {
+    "eyebrow": "Santé naturelle · Cotonou",
+    "title": "Santé - Fertilité chez la femme et l'homme",
+    "text": "Découvrez notre approche naturelle pour soutenir votre bien-être face aux défis du Diabète, de la Prostate et de l'Hypertension Artérielle. Des compléments nutritionnels élaborés à partir de la puissance ancestrale des plantes et racines médicinales soigneusement sélectionnées.",
+    "cta": "Nos Solutions Naturelles"
+  },
+
+  "solutions": {
+    "eyebrow": "Nos solutions",
+    "title": "Pourquoi choisir Agbélé-Alafia ?",
+    "intro": "Profitez des bienfaits profonds et concentrés des extraits de racines et de plantes pour une action synergique sur votre organisme.",
+    "item1_icon": "🌿",
+    "item1_title": "Soutien Naturel Ciblé",
+    "item1_text": "Des formulations uniques conçues pour aider à maintenir l'équilibre glycémique, le confort urinaire masculin et une tension artérielle saine.",
+    "item2_icon": "✨",
+    "item2_title": "Patrimoine et Efficacité",
+    "item2_text": "Nous combinons la sagesse des remèdes traditionnels avec une sélection rigoureuse des meilleurs actifs naturels.",
+    "item3_icon": "💪",
+    "item3_title": "La Force de la Racine",
+    "item3_text": "Pour une vie pleine de vitalité et de sérénité, faites confiance à Agbélé-Alafia."
+  },
+
+  "fertilite": {
+    "eyebrow": "Fertilité",
+    "title": "Votre chemin vers la parentalité commence ici !",
+    "femme_title": "Pour Madame",
+    "femme_text": "Nous comprenons le désir d'avoir un enfant. Nos solutions soutiennent le cycle féminin, aident à régulariser et optimiser l'ovulation. Elles offrent un environnement sain et nourrissant pour la conception.",
+    "homme_title": "Pour Monsieur",
+    "homme_text": "Messieurs, la fertilité n'est pas qu'une affaire de femme. Si vos résultats de spermogramme indiquent une faible quantité, un manque de mobilité ou une mauvaise qualité des spermatozoïdes, ne baissez pas les bras. Nos solutions naturelles et ciblées sont conçues pour revitaliser votre système reproducteur et booster vos chances de devenir père."
+  },
+
+  "infections": {
+    "eyebrow": "Infections",
+    "title": "Agbélé-Alafia Infections : Votre Bouclier Naturel",
+    "intro": "Renforcez vos défenses pour une protection optimale ! Face aux agressions extérieures et aux infections récurrentes (urinaires, respiratoires, etc.), votre corps a besoin d'un soutien puissant et naturel.",
+    "item1_icon": "🎯",
+    "item1_title": "Action Ciblée",
+    "item1_text": "Des extraits de racines et de plantes pour le soutien du système immunitaire et de purification.",
+    "item2_icon": "🌿",
+    "item2_title": "Force Naturelle",
+    "item2_text": "Un concentré d'actifs pour combattre efficacement et prévenir la récidive.",
+    "item3_icon": "🌸",
+    "item3_title": "Bien-être Retrouvé",
+    "item3_text": "Contribuez à l'équilibre et à l'harmonie interne de votre corps."
+  },
+
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Contactez-nous et Commandez",
+    "intro": "Notre équipe est là pour vous accompagner sereinement vers votre projet de famille.",
+    "phone1": "+229 01 57 35 36 35",
+    "phone2": "01 96 56 37 89",
+    "whatsapp": "57353635",
+    "email": "agbelealafia@gmail.com",
+    "deliveryText": "Livraison possible ! Appelez le 0157353635.",
+    "facebook": "https://www.facebook.com/profile.php?id=61557355948928",
+    "address": "Agla, Rue Pharmacie des Archanges, 3ème maison à étages à gauche, Cotonou, Bénin, 00229"
+  },
+
+  "footer": {
+    "text": "Cabinet Agbélé-Alafia : Pour que la vie continue.",
+    "legal": "© 2026 Cabinet Agbélé - Alafia. Tous droits réservés."
+  }
+}
