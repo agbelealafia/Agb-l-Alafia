@@ -6,6 +6,7 @@
     "solutions": "Nos Solutions",
     "fertilite": "Fertilité",
     "infections": "Infections",
+    "videos": "Vidéos",
     "contact": "Contact"
   },
 
@@ -53,6 +54,26 @@
     "item3_icon": "🌸",
     "item3_title": "Bien-être Retrouvé",
     "item3_text": "Contribuez à l'équilibre et à l'harmonie interne de votre corps."
+  },
+
+  "videos": {
+    "eyebrow": "Vidéos & témoignages",
+    "title": "Agbélé-Alafia en images",
+    "intro": "Retrouvez nos publications et témoignages, directement issus de notre page Facebook officielle.",
+    "items": [
+      { "label": "Vidéo 1", "url": "https://www.facebook.com/share/v/1DF4SzppKY/" },
+      { "label": "Vidéo 2", "url": "https://www.facebook.com/share/v/1DM6QVG8kz/" },
+      { "label": "Vidéo 3", "url": "https://www.facebook.com/share/v/1Te74xaLpu/" },
+      { "label": "Vidéo 4", "url": "https://www.facebook.com/share/v/1cP71ZPJs2/" },
+      { "label": "Vidéo 5", "url": "https://www.facebook.com/share/r/1DTzYFU6d8/" },
+      { "label": "Vidéo 6", "url": "https://www.facebook.com/share/v/1DLRyQWcvA/" },
+      { "label": "Vidéo 7", "url": "https://www.facebook.com/share/r/17yimfwj8P/" },
+      { "label": "Vidéo 8", "url": "https://www.facebook.com/share/1F8iReqeMb/" }
+    ],
+    "eventLabel": "📅 Événement : Agbélé-Alafia Santé et Fertilité",
+    "eventUrl": "https://facebook.com/events/s/agbele-alafia-sante-et-fertili/1687059961923750/",
+    "postLabel": "📄 Publication Facebook",
+    "postUrl": "https://www.facebook.com/61557355948928/posts/122245858208245198/?app=fbl"
   },
 
   "contact": {

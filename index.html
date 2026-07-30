@@ -2,13 +2,43 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Cabinet Agbélé - Alafia | Santé &amp; Fertilité Naturelle</title>
 <meta name="description" content="Cabinet Agbélé-Alafia à Cotonou : compléments nutritionnels naturels pour la fertilité, le diabète, la prostate, l'hypertension et les infections.">
 
+<!-- Favicon & icônes -->
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="icons/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="icons/favicon-16.png" type="image/png" sizes="16x16">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+
+<!-- Application web progressive (PWA) -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#FCFDFA" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12201A" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Agbélé-Alafia">
+<meta name="mobile-web-app-capable" content="yes">
+
+<!-- Partage sur les réseaux sociaux / messageries (WhatsApp, Facebook, TikTok...) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cabinet Agbélé - Alafia">
+<meta property="og:title" content="Cabinet Agbélé - Alafia | Santé & Fertilité Naturelle">
+<meta property="og:description" content="Santé - Fertilité chez la femme et l'homme. Compléments nutritionnels naturels à base de plantes et racines médicinales. Cotonou, Bénin.">
+<meta property="og:image" content="https://agbelealafia.github.io/Agb-l-Alafia/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://agbelealafia.github.io/Agb-l-Alafia/">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cabinet Agbélé - Alafia | Santé & Fertilité Naturelle">
+<meta name="twitter:description" content="Santé - Fertilité chez la femme et l'homme. Compléments nutritionnels naturels. Cotonou, Bénin.">
+<meta name="twitter:image" content="https://agbelealafia.github.io/Agb-l-Alafia/images/og-image.jpg">
+
 <style>
 /* ==========================================================================
-   1. JETONS DE DESIGN (Design tokens)
+   1. JETONS DE DESIGN — thème clair (par défaut) et thème sombre
    ========================================================================== */
 :root{
   --green-deep:   #1B4332;
@@ -23,8 +53,10 @@
   --text-soft:    #4E5F55;
   --text-invert:  #F3F7F1;
   --border-soft:  rgba(27,67,50,0.12);
+  --header-bg:    rgba(252,253,250,0.92);
   --shadow-soft:  0 18px 40px -22px rgba(27,67,50,0.35);
   --shadow-card:  0 10px 30px -16px rgba(27,67,50,0.25);
+  --icon-fill:    var(--green-deep);
 
   --font-display: Georgia,'Iowan Old Style','Palatino Linotype',Palatino,'Times New Roman',serif;
   --font-body: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
@@ -33,6 +65,27 @@
   --radius-lg: 22px;
   --radius-md: 14px;
   --radius-sm: 8px;
+  color-scheme: light;
+}
+
+[data-theme="dark"]{
+  --green-deep:   #EAF2E7;
+  --green-mid:    #9CC7AE;
+  --green-soft:   #6FBE93;
+  --green-pale:   #17281F;
+  --gold-root:    #D8B074;
+  --gold-root-soft:#4A3C24;
+  --bg:           #0F1B15;
+  --paper:        #16261D;
+  --text:         #E8F0E9;
+  --text-soft:    #A9BDAE;
+  --text-invert:  #0F1B15;
+  --border-soft:  rgba(234,242,231,0.14);
+  --header-bg:    rgba(15,27,21,0.88);
+  --shadow-soft:  0 18px 40px -20px rgba(0,0,0,0.55);
+  --shadow-card:  0 10px 30px -16px rgba(0,0,0,0.5);
+  --icon-fill:    #9CC7AE;
+  color-scheme: dark;
 }
 
 /* ==========================================================================
@@ -51,6 +104,7 @@ body{
   font-family:var(--font-body);
   line-height:1.6;
   -webkit-font-smoothing:antialiased;
+  transition:background .3s ease, color .3s ease;
 }
 img{ max-width:100%; display:block; }
 a{ color:inherit; text-decoration:none; }
@@ -59,114 +113,86 @@ p{ margin:0 0 1em; }
 ul{ margin:0; padding:0; list-style:none; }
 button{ font-family:inherit; }
 :focus-visible{ outline:3px solid var(--gold-root); outline-offset:3px; border-radius:4px; }
+.icon{ width:1em; height:1em; fill:currentColor; display:inline-block; vertical-align:-0.15em; }
 
 .container{ max-width:var(--container); margin:0 auto; padding:0 24px; }
 .eyebrow{
-  font-family:var(--font-body);
-  text-transform:uppercase;
-  letter-spacing:.14em;
-  font-size:.78rem;
-  font-weight:700;
-  color:var(--gold-root);
-  margin:0 0 .9em;
+  font-family:var(--font-body); text-transform:uppercase; letter-spacing:.14em;
+  font-size:.78rem; font-weight:700; color:var(--gold-root); margin:0 0 .9em;
 }
 .section-intro{ max-width:640px; color:var(--text-soft); font-size:1.05rem; }
-.visually-hidden{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
 
 /* ==========================================================================
-   3. MOTIF SIGNATURE — brindille de feuilles (repris du logo)
+   3. MOTIF SIGNATURE — brindille de feuilles
    ========================================================================== */
-.sprig{ color:var(--gold-root); }
-.divider{
-  display:flex; align-items:center; justify-content:center;
-  padding:10px 0;
-  background:var(--bg);
-}
-.divider svg{ width:150px; height:34px; opacity:.85; }
+.divider{ display:flex; align-items:center; justify-content:center; padding:10px 0; background:var(--bg); }
+.divider svg{ width:150px; height:34px; opacity:.85; color:var(--gold-root); }
 .divider.on-pale{ background:var(--green-pale); }
 .divider.on-deep{ background:var(--green-deep); }
 .divider.on-deep svg{ color:var(--gold-root-soft); }
+[data-theme="dark"] .divider.on-deep{ background:#0B140F; }
 
 /* ==========================================================================
    4. EN-TÊTE
    ========================================================================== */
 .site-header{
-  position:sticky; top:0; z-index:50;
-  background:rgba(252,253,250,0.92);
-  backdrop-filter:saturate(160%) blur(10px);
-  border-bottom:1px solid var(--border-soft);
+  position:sticky; top:0; z-index:50; background:var(--header-bg);
+  backdrop-filter:saturate(160%) blur(10px); border-bottom:1px solid var(--border-soft);
 }
-.header-inner{
-  max-width:var(--container); margin:0 auto; padding:12px 24px;
-  display:flex; align-items:center; justify-content:space-between; gap:16px;
-}
+.header-inner{ max-width:var(--container); margin:0 auto; padding:12px 24px; display:flex; align-items:center; justify-content:space-between; gap:12px; }
 .brand{ display:flex; align-items:center; gap:12px; }
-.brand-logo{
-  width:44px; height:44px; border-radius:50%;
-  background:#fff; padding:3px;
-  box-shadow:0 0 0 2px var(--green-pale);
-  object-fit:cover;
-}
+.brand-logo{ width:44px; height:44px; border-radius:50%; background:#fff; padding:3px; box-shadow:0 0 0 2px var(--green-pale); object-fit:cover; }
 .brand-name{ font-family:var(--font-display); font-size:1.12rem; font-weight:700; color:var(--green-deep); }
 
-.nav-toggle{
-  display:none; flex-direction:column; justify-content:center; gap:5px;
-  width:40px; height:40px; background:none; border:none; cursor:pointer; border-radius:8px;
+.header-actions{ display:flex; align-items:center; gap:8px; }
+.icon-btn{
+  display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px;
+  border-radius:50%; border:1px solid var(--border-soft); background:var(--paper); color:var(--green-deep);
+  cursor:pointer; font-size:1.1rem; transition:transform .15s ease, background .2s ease;
 }
+.icon-btn:hover{ transform:translateY(-1px); background:var(--green-pale); }
+.install-btn{
+  display:none; align-items:center; gap:7px; background:var(--gold-root); color:#fff;
+  border:none; border-radius:999px; padding:9px 16px; font-weight:700; font-size:.86rem; cursor:pointer;
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.install-btn.show{ display:inline-flex; }
+.install-btn:hover{ transform:translateY(-1px); box-shadow:var(--shadow-card); }
+
+.nav-toggle{ display:none; flex-direction:column; justify-content:center; gap:5px; width:40px; height:40px; background:none; border:none; cursor:pointer; border-radius:8px; }
 .nav-toggle span{ display:block; width:22px; height:2px; background:var(--green-deep); margin:0 auto; transition:transform .25s ease, opacity .25s ease; }
 .nav-toggle[aria-expanded="true"] span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
 .nav-toggle[aria-expanded="true"] span:nth-child(2){ opacity:0; }
 .nav-toggle[aria-expanded="true"] span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
 
-.site-nav{ display:flex; align-items:center; gap:28px; }
-.site-nav a{
-  font-size:.95rem; font-weight:600; color:var(--text-soft);
-  padding:6px 2px; border-bottom:2px solid transparent; transition:color .2s ease, border-color .2s ease;
-}
+.site-nav{ display:flex; align-items:center; gap:24px; }
+.site-nav a{ font-size:.95rem; font-weight:600; color:var(--text-soft); padding:6px 2px; border-bottom:2px solid transparent; transition:color .2s ease, border-color .2s ease; }
 .site-nav a:hover, .site-nav a.active{ color:var(--green-deep); border-color:var(--gold-root); }
-.site-nav a.nav-cta{
-  background:var(--green-deep); color:var(--text-invert); border:none;
-  padding:9px 18px; border-radius:999px; font-weight:700;
-}
+.site-nav a.nav-cta{ background:var(--green-deep); color:var(--bg); border:none; padding:9px 18px; border-radius:999px; font-weight:700; }
 .site-nav a.nav-cta:hover{ background:var(--green-mid); border-color:transparent; }
 
 /* ==========================================================================
-   5. HÉRO
+   5. HÉRO — sans photo : composition typographique + formes organiques
    ========================================================================== */
-.hero{ position:relative; overflow:hidden; padding:64px 0 88px; }
+.hero{ position:relative; overflow:hidden; padding:80px 0 96px; text-align:center; }
 .hero-blob{
-  position:absolute; z-index:0; top:-160px; right:-180px;
-  width:560px; height:560px; border-radius:42% 58% 63% 37% / 45% 40% 60% 55%;
-  background:radial-gradient(circle at 35% 30%, var(--green-pale), transparent 70%),
-             radial-gradient(circle at 70% 70%, var(--gold-root-soft), transparent 60%);
+  position:absolute; z-index:0; top:-220px; left:50%; transform:translateX(-50%);
+  width:900px; height:900px; border-radius:42% 58% 63% 37% / 45% 40% 60% 55%;
+  background:radial-gradient(circle at 35% 30%, var(--green-pale), transparent 65%),
+             radial-gradient(circle at 70% 70%, var(--gold-root-soft), transparent 55%);
   opacity:.7; pointer-events:none;
 }
-.hero-inner{
-  position:relative; z-index:1; max-width:var(--container); margin:0 auto; padding:0 24px;
-  display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center;
-}
-.hero-copy h1{ font-size:clamp(2rem,4.2vw,2.9rem); }
-.hero-text{ color:var(--text-soft); font-size:1.08rem; max-width:520px; }
-.btn{
-  display:inline-flex; align-items:center; gap:10px;
-  padding:14px 26px; border-radius:999px; font-weight:700; font-size:.98rem;
-  transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
-  box-shadow:var(--shadow-card);
-}
-.btn-primary{ background:var(--green-deep); color:var(--text-invert); }
+.hero-inner{ position:relative; z-index:1; max-width:760px; margin:0 auto; padding:0 24px; }
+.hero-mark{ width:86px; height:86px; margin:0 auto 22px; opacity:.9; }
+.hero-copy h1{ font-size:clamp(2.1rem,4.6vw,3.1rem); }
+.hero-text{ color:var(--text-soft); font-size:1.1rem; max-width:560px; margin-left:auto; margin-right:auto; }
+.hero-actions{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:8px; }
+.btn{ display:inline-flex; align-items:center; gap:10px; padding:14px 26px; border-radius:999px; font-weight:700; font-size:.98rem; transition:transform .2s ease, box-shadow .2s ease, background .2s ease; box-shadow:var(--shadow-card); }
+.btn-primary{ background:var(--green-deep); color:var(--bg); }
 .btn-primary:hover{ background:var(--green-mid); transform:translateY(-2px); box-shadow:var(--shadow-soft); }
 .btn-primary::after{ content:"→"; }
-
-.hero-media-frame{
-  position:relative; border-radius:var(--radius-lg); overflow:hidden;
-  box-shadow:var(--shadow-soft); aspect-ratio:4/5;
-}
-.hero-media-frame img{ width:100%; height:100%; object-fit:cover; }
-.hero-media-frame::after{
-  content:""; position:absolute; inset:0;
-  background:linear-gradient(180deg, rgba(27,67,50,.55) 0%, rgba(27,67,50,.05) 26%, rgba(27,67,50,0) 45%);
-  pointer-events:none;
-}
+.btn-ghost{ background:transparent; color:var(--green-deep); border:1.5px solid var(--border-soft); box-shadow:none; }
+.btn-ghost:hover{ border-color:var(--gold-root); transform:translateY(-2px); }
 
 /* ==========================================================================
    6. SECTIONS GÉNÉRIQUES & CARTES
@@ -176,113 +202,88 @@ section{ padding:76px 0; }
 .section-head{ margin-bottom:44px; }
 
 .card-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:26px; margin-top:36px; }
-.card{
-  background:var(--paper); border:1px solid var(--border-soft); border-radius:var(--radius-md);
-  padding:30px 26px; box-shadow:var(--shadow-card);
-  transition:transform .25s ease, box-shadow .25s ease;
-}
+.card{ background:var(--paper); border:1px solid var(--border-soft); border-radius:var(--radius-md); padding:30px 26px; box-shadow:var(--shadow-card); transition:transform .25s ease, box-shadow .25s ease; }
 .card:hover{ transform:translateY(-4px); box-shadow:var(--shadow-soft); }
-.card-icon{
-  display:inline-flex; align-items:center; justify-content:center;
-  width:56px; height:56px; border-radius:50%; font-size:1.6rem;
-  background:var(--green-pale); box-shadow:0 0 0 4px var(--gold-root-soft) inset;
-  margin-bottom:18px;
-}
+.card-icon{ display:inline-flex; align-items:center; justify-content:center; width:56px; height:56px; border-radius:50%; font-size:1.6rem; background:var(--green-pale); box-shadow:0 0 0 4px var(--gold-root-soft) inset; margin-bottom:18px; }
 .card h3{ font-size:1.18rem; margin-bottom:.4em; }
 .card p{ color:var(--text-soft); font-size:.98rem; margin:0; }
 
-/* Bloc décoratif "nature" dans la section Solutions */
-.solutions-visual{
-  display:flex; justify-content:center; margin:8px 0 -6px;
-}
-.solutions-visual img{
-  width:130px; height:130px; mix-blend-mode:multiply; opacity:.92;
-}
+.solutions-visual{ display:flex; justify-content:center; margin:8px 0 -6px; }
+.solutions-visual img{ width:130px; height:130px; mix-blend-mode:multiply; opacity:.92; }
+[data-theme="dark"] .solutions-visual img{ mix-blend-mode:screen; opacity:.8; }
 
 /* ==========================================================================
-   7. FERTILITÉ
+   7. FERTILITÉ — la photo du couple vit uniquement ici
    ========================================================================== */
-.fertilite-grid{
-  display:grid; grid-template-columns:.85fr 1.15fr; gap:52px; align-items:center; margin-top:20px;
-}
-.fertilite-media{
-  border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-card);
-  aspect-ratio:4/5; position:relative;
-}
+.fertilite-grid{ display:grid; grid-template-columns:.85fr 1.15fr; gap:52px; align-items:center; margin-top:20px; }
+.fertilite-media{ border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-card); aspect-ratio:4/5; position:relative; }
 .fertilite-media img{ width:100%; height:100%; object-fit:cover; }
-.fertilite-media::after{
-  content:""; position:absolute; inset:0;
-  background:linear-gradient(180deg, rgba(27,67,50,.5) 0%, rgba(27,67,50,.04) 24%, rgba(27,67,50,0) 42%);
-}
+.fertilite-media::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(27,67,50,.5) 0%, rgba(27,67,50,.04) 24%, rgba(27,67,50,0) 42%); }
 .fertilite-columns{ display:grid; grid-template-columns:1fr auto 1fr; gap:28px; align-items:start; }
-.fertilite-col h3{
-  font-size:1.05rem; text-transform:uppercase; letter-spacing:.06em;
-  color:var(--gold-root); font-family:var(--font-body); font-weight:700;
-}
+.fertilite-col h3{ font-size:1.05rem; text-transform:uppercase; letter-spacing:.06em; color:var(--gold-root); font-family:var(--font-body); font-weight:700; }
 .fertilite-col p{ color:var(--text-soft); font-size:.98rem; }
 .fertilite-sep{ width:1px; background:linear-gradient(var(--border-soft),var(--gold-root-soft),var(--border-soft)); height:100%; }
 
 /* ==========================================================================
-   8. CONTACT
+   8. VIDÉOS & TÉMOIGNAGES
    ========================================================================== */
-.contact-grid{ display:grid; grid-template-columns:1.1fr .9fr; gap:40px; margin-top:36px; align-items:start; }
-.contact-info{
-  background:var(--paper); border:1px solid var(--border-soft); border-radius:var(--radius-md);
-  box-shadow:var(--shadow-card); overflow:hidden;
+.video-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px; margin-top:36px; }
+.video-card{ background:var(--paper); border:1px solid var(--border-soft); border-radius:var(--radius-md); overflow:hidden; box-shadow:var(--shadow-card); }
+.video-frame-wrap{ position:relative; width:100%; aspect-ratio:16/9; background:var(--green-pale); }
+.video-frame-wrap iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
+.video-caption{ display:flex; align-items:center; justify-content:space-between; gap:10px; padding:14px 16px; }
+.video-caption span{ font-weight:700; font-size:.92rem; }
+.video-caption a{ font-size:.82rem; color:var(--gold-root); font-weight:700; white-space:nowrap; }
+.video-more{ margin-top:30px; display:flex; flex-wrap:wrap; gap:14px; }
+.video-more a{
+  display:inline-flex; align-items:center; gap:8px; background:var(--paper); border:1px solid var(--border-soft);
+  padding:12px 18px; border-radius:999px; font-weight:700; font-size:.9rem; box-shadow:var(--shadow-card);
 }
-.contact-row{
-  display:flex; align-items:center; gap:14px; padding:17px 22px;
-  border-bottom:1px solid var(--border-soft); font-weight:600; font-size:.98rem;
-  transition:background .2s ease;
-}
-.contact-row:last-child{ border-bottom:none; }
-a.contact-row:hover{ background:var(--green-pale); }
-.contact-row .ico{ font-size:1.15rem; flex-shrink:0; }
-.contact-address{ align-items:flex-start; font-weight:500; color:var(--text-soft); }
-
-.delivery-banner{
-  background:linear-gradient(135deg, var(--gold-root), #a97740);
-  color:#fff; border-radius:var(--radius-md); padding:26px 24px;
-  font-weight:700; font-size:1.05rem; box-shadow:var(--shadow-card);
-  display:flex; align-items:center; gap:14px;
-}
-.delivery-banner .ico{ font-size:1.7rem; }
-.fb-btn{
-  margin-top:16px; display:inline-flex; align-items:center; gap:8px;
-  color:var(--green-deep); font-weight:700; border-bottom:2px solid var(--gold-root);
-  padding-bottom:2px;
-}
+.video-more a:hover{ border-color:var(--gold-root); }
+.video-note{ font-size:.85rem; color:var(--text-soft); margin-top:18px; }
 
 /* ==========================================================================
-   9. PIED DE PAGE
+   9. CONTACT
    ========================================================================== */
-.site-footer{
-  background:var(--green-deep); color:var(--text-invert);
-  padding:48px 0 30px; text-align:center;
-}
-.footer-logo{
-  width:56px; height:56px; border-radius:50%; margin:0 auto 14px;
-  background:#fff; padding:4px;
-}
+.contact{ background:var(--green-deep); color:var(--bg); }
+[data-theme="dark"] .contact{ background:#0B140F; }
+.contact .eyebrow{ color:var(--gold-root); }
+.contact h2{ color:inherit; }
+.contact .section-intro{ color:#CFE0D6; }
+[data-theme="dark"] .contact .section-intro{ color:#8FA79A; }
+.contact-grid{ display:grid; grid-template-columns:1.1fr .9fr; gap:40px; margin-top:36px; align-items:start; }
+.contact-info{ background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.14); border-radius:var(--radius-md); box-shadow:var(--shadow-card); overflow:hidden; }
+.contact-row{ display:flex; align-items:center; gap:14px; padding:17px 22px; border-bottom:1px solid rgba(255,255,255,.14); font-weight:600; font-size:.98rem; transition:background .2s ease; }
+.contact-row:last-child{ border-bottom:none; }
+a.contact-row:hover{ background:rgba(255,255,255,.08); }
+.contact-row .icon-badge{ width:34px; height:34px; flex-shrink:0; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; background:rgba(255,255,255,.12); font-size:1.05rem; }
+.contact-address{ align-items:flex-start; font-weight:500; }
+
+.delivery-banner{ background:linear-gradient(135deg, var(--gold-root), #a97740); color:#fff; border-radius:var(--radius-md); padding:26px 24px; font-weight:700; font-size:1.05rem; box-shadow:var(--shadow-card); display:flex; align-items:center; gap:14px; }
+.delivery-banner .icon-badge{ width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,.22); display:inline-flex; align-items:center; justify-content:center; font-size:1.4rem; flex-shrink:0; }
+.fb-btn{ margin-top:16px; display:inline-flex; align-items:center; gap:8px; color:#fff; font-weight:700; border-bottom:2px solid var(--gold-root); padding-bottom:2px; }
+
+/* ==========================================================================
+   10. PIED DE PAGE
+   ========================================================================== */
+.site-footer{ background:var(--green-deep); color:var(--bg); padding:48px 0 30px; text-align:center; }
+[data-theme="dark"] .site-footer{ background:#0B140F; }
+.footer-logo{ width:56px; height:56px; border-radius:50%; margin:0 auto 14px; background:#fff; padding:4px; }
 .site-footer p{ margin:0 0 .4em; }
 .footer-text{ font-family:var(--font-display); font-size:1.15rem; }
 .footer-legal{ opacity:.7; font-size:.85rem; margin-top:14px; }
 
 /* ==========================================================================
-   10. RÉVÉLATION AU DÉFILEMENT
+   11. RÉVÉLATION AU DÉFILEMENT
    ========================================================================== */
 .reveal{ opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease; }
 .reveal.is-visible{ opacity:1; transform:translateY(0); }
-@media (prefers-reduced-motion: reduce){
-  .reveal{ opacity:1; transform:none; transition:none; }
-}
+@media (prefers-reduced-motion: reduce){ .reveal{ opacity:1; transform:none; transition:none; } }
 
 /* ==========================================================================
-   11. RESPONSIVE
+   12. RESPONSIVE
    ========================================================================== */
 @media (max-width: 880px){
-  .hero-inner{ grid-template-columns:1fr; gap:36px; }
-  .hero-media-frame{ aspect-ratio:16/10; order:-1; }
   .fertilite-grid{ grid-template-columns:1fr; }
   .fertilite-media{ aspect-ratio:16/10; }
   .fertilite-columns{ grid-template-columns:1fr; }
@@ -293,21 +294,35 @@ a.contact-row:hover{ background:var(--green-pale); }
 @media (max-width: 640px){
   .nav-toggle{ display:flex; }
   .site-nav{
-    position:absolute; top:100%; left:0; right:0;
-    background:var(--paper); border-bottom:1px solid var(--border-soft);
-    flex-direction:column; align-items:stretch; gap:0;
-    max-height:0; overflow:hidden; transition:max-height .3s ease;
+    position:absolute; top:100%; left:0; right:0; background:var(--paper); border-bottom:1px solid var(--border-soft);
+    flex-direction:column; align-items:stretch; gap:0; max-height:0; overflow:hidden; transition:max-height .3s ease;
   }
-  .site-nav.open{ max-height:340px; }
+  .site-nav.open{ max-height:420px; }
   .site-nav a{ padding:16px 24px; border-bottom:1px solid var(--border-soft); border-radius:0; }
   .site-nav a.nav-cta{ margin:14px 24px; text-align:center; }
   .card-grid{ grid-template-columns:1fr; }
   section{ padding:56px 0; }
-  .hero{ padding:44px 0 60px; }
+  .hero{ padding:52px 0 64px; }
+  .install-btn span.install-label{ display:none; }
+  .install-btn{ width:38px; height:38px; padding:0; justify-content:center; border-radius:50%; }
 }
 </style>
 </head>
 <body>
+
+<!-- Sprites SVG (icônes réutilisées dans toute la page) -->
+<svg style="display:none" aria-hidden="true">
+  <symbol id="icon-phone" viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.9 21 3 13.1 3 3.5c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></symbol>
+  <symbol id="icon-whatsapp" viewBox="0 0 24 24"><path d="M12 2.5c-5.2 0-9.5 4.3-9.5 9.5 0 1.7.4 3.3 1.3 4.7L2.5 21.5l4.9-1.3c1.4.8 2.9 1.2 4.6 1.2 5.2 0 9.5-4.3 9.5-9.5S17.2 2.5 12 2.5zm5.5 13.4c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.7-2.8-1-4.6-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.3c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .5.4.2.5.7 1.8.7 1.9.1.1.1.3 0 .4-.1.2-.1.3-.3.5l-.4.5c-.1.1-.3.3-.1.6.2.3.9 1.4 1.9 2.3 1.3 1.2 2.4 1.5 2.7 1.7.3.2.5.1.6-.1l.6-.7c.2-.3.4-.2.6-.1l1.7.8c.2.1.4.2.4.3.1.2.1.9-.1 1.4z"/></symbol>
+  <symbol id="icon-mail" viewBox="0 0 24 24"><path d="M3 5.5h18c.6 0 1 .4 1 1v11c0 .6-.4 1-1 1H3c-.6 0-1-.4-1-1v-11c0-.6.4-1 1-1zm1.4 1.7 7 5.4c.4.3.8.3 1.2 0l7-5.4H4.4zM3 8.4v9.1h18V8.4l-7.6 5.9c-1.1.8-2.7.8-3.8 0L3 8.4z"/></symbol>
+  <symbol id="icon-facebook" viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></symbol>
+  <symbol id="icon-pin" viewBox="0 0 24 24"><path d="M12 2c-4.1 0-7.5 3.4-7.5 7.5 0 5.6 6.6 11.8 6.9 12.1.3.3.9.3 1.2 0 .3-.3 6.9-6.5 6.9-12.1C19.5 5.4 16.1 2 12 2zm0 10.2c-1.5 0-2.7-1.2-2.7-2.7S10.5 6.8 12 6.8s2.7 1.2 2.7 2.7-1.2 2.7-2.7 2.7z"/></symbol>
+  <symbol id="icon-truck" viewBox="0 0 24 24"><path d="M3 6.5c0-.6.4-1 1-1h9c.6 0 1 .4 1 1v2.3h2.4c.3 0 .6.1.8.4l2.6 3.2c.1.2.2.4.2.6v3.5c0 .6-.4 1-1 1h-1.1a2.4 2.4 0 1 1-4.7 0H9.8a2.4 2.4 0 1 1-4.7 0H4c-.6 0-1-.4-1-1V6.5zm13.6 10.9a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8zM7.4 17.4a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8zM14 10.3v3.2h4.6v-.6l-2.1-2.6H14z"/></symbol>
+  <symbol id="icon-sun" viewBox="0 0 24 24"><path d="M12 4.5a1 1 0 0 1-1-1V2a1 1 0 1 1 2 0v1.5a1 1 0 0 1-1 1zm0 15a1 1 0 0 1 1 1V22a1 1 0 1 1-2 0v-1.5a1 1 0 0 1 1-1zm9.5-7.5a1 1 0 0 1-1 1H19a1 1 0 1 1 0-2h1.5a1 1 0 0 1 1 1zm-17 0a1 1 0 0 1-1 1H2a1 1 0 1 1 0-2h1.5a1 1 0 0 1 1 1zm14.6-6.6a1 1 0 0 1 0 1.4l-1.1 1.1a1 1 0 1 1-1.4-1.4l1.1-1.1a1 1 0 0 1 1.4 0zM6.4 17.6a1 1 0 0 1 0 1.4l-1.1 1.1a1 1 0 1 1-1.4-1.4l1.1-1.1a1 1 0 0 1 1.4 0zm11.2 0 1.1 1.1a1 1 0 0 1-1.4 1.4l-1.1-1.1a1 1 0 1 1 1.4-1.4zM6.4 6.4 5.3 5.3a1 1 0 0 1 1.4-1.4l1.1 1.1a1 1 0 1 1-1.4 1.4zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10z"/></symbol>
+  <symbol id="icon-moon" viewBox="0 0 24 24"><path d="M20.7 14.9a8.5 8.5 0 0 1-10.6-10.6c.2-.6-.4-1.2-1-1a10 10 0 1 0 12.6 12.6c.6-.2.6-1 0-1z"/></symbol>
+  <symbol id="icon-install" viewBox="0 0 24 24"><path d="M12 3a1 1 0 0 1 1 1v9.6l2.9-2.9a1 1 0 1 1 1.4 1.4l-4.6 4.6a1 1 0 0 1-1.4 0L6.7 12a1 1 0 1 1 1.4-1.4l2.9 2.9V4a1 1 0 0 1 1-1zM5 19a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1z"/></symbol>
+  <symbol id="icon-play" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5-11-6.5z"/></symbol>
+</svg>
 
 <header class="site-header">
   <div class="header-inner">
@@ -315,16 +330,25 @@ a.contact-row:hover{ background:var(--green-pale); }
       <img src="images/logo.jpg" alt="Logo Cabinet Agbélé-Alafia" class="brand-logo">
       <span class="brand-name" id="brand-name">Cabinet Agbélé - Alafia</span>
     </a>
-    <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="site-nav">
-      <span></span><span></span><span></span>
-    </button>
-    <nav class="site-nav" id="site-nav">
-      <a href="#accueil" data-nav="accueil" id="nav-accueil">Accueil</a>
-      <a href="#solutions" data-nav="solutions" id="nav-solutions">Nos Solutions</a>
-      <a href="#fertilite" data-nav="fertilite" id="nav-fertilite">Fertilité</a>
-      <a href="#infections" data-nav="infections" id="nav-infections">Infections</a>
-      <a href="#contact" data-nav="contact" id="nav-contact" class="nav-cta">Contact</a>
-    </nav>
+    <div class="header-actions">
+      <button class="install-btn" id="install-btn" type="button" aria-label="Installer l'application">
+        <svg class="icon" aria-hidden="true"><use href="#icon-install"/></svg><span class="install-label">Installer</span>
+      </button>
+      <button class="icon-btn" id="theme-toggle" type="button" aria-label="Changer de thème">
+        <svg class="icon" id="theme-icon" aria-hidden="true"><use href="#icon-moon"/></svg>
+      </button>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="site-nav">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav">
+        <a href="#accueil" data-nav="accueil" id="nav-accueil">Accueil</a>
+        <a href="#solutions" data-nav="solutions" id="nav-solutions">Nos Solutions</a>
+        <a href="#fertilite" data-nav="fertilite" id="nav-fertilite">Fertilité</a>
+        <a href="#infections" data-nav="infections" id="nav-infections">Infections</a>
+        <a href="#videos" data-nav="videos" id="nav-videos">Vidéos</a>
+        <a href="#contact" data-nav="contact" id="nav-contact" class="nav-cta">Contact</a>
+      </nav>
+    </div>
   </div>
 </header>
 
@@ -334,28 +358,19 @@ a.contact-row:hover{ background:var(--green-pale); }
     <div class="hero-blob" aria-hidden="true"></div>
     <div class="hero-inner">
       <div class="hero-copy reveal">
+        <img src="icons/icon-192.png" alt="" class="hero-mark" aria-hidden="true">
         <p class="eyebrow" id="hero-eyebrow">Santé naturelle · Cotonou</p>
         <h1 id="hero-title">Santé - Fertilité chez la femme et l'homme</h1>
         <p class="hero-text" id="hero-text"></p>
-        <a href="#solutions" class="btn btn-primary" id="hero-cta">Nos Solutions Naturelles</a>
-      </div>
-      <div class="hero-media reveal">
-        <div class="hero-media-frame">
-          <img src="images/fertilite.jpg" alt="Couple souriant accompagné par Agbélé-Alafia dans son projet de famille" id="hero-image">
+        <div class="hero-actions">
+          <a href="#solutions" class="btn btn-primary" id="hero-cta">Nos Solutions Naturelles</a>
+          <a href="#videos" class="btn btn-ghost" id="hero-cta-2">Voir nos vidéos</a>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="divider" aria-hidden="true">
-    <svg class="sprig" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M6 20 Q40 4 60 20 Q80 36 114 20" stroke="currentColor" stroke-width="1.4"/>
-      <path d="M28 14 Q33 7 40 8 Q35 15 28 14Z" fill="currentColor"/>
-      <path d="M56 27 Q51 33 44 32 Q49 25 56 27Z" fill="currentColor"/>
-      <path d="M78 13 Q83 6 90 7 Q85 14 78 13Z" fill="currentColor"/>
-      <path d="M92 25 Q97 31 103 29 Q98 23 92 25Z" fill="currentColor"/>
-    </svg>
-  </div>
+  <div class="divider" aria-hidden="true"><svg class="sprig" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 20 Q40 4 60 20 Q80 36 114 20" stroke="currentColor" stroke-width="1.4"/><path d="M28 14 Q33 7 40 8 Q35 15 28 14Z" fill="currentColor"/><path d="M56 27 Q51 33 44 32 Q49 25 56 27Z" fill="currentColor"/><path d="M78 13 Q83 6 90 7 Q85 14 78 13Z" fill="currentColor"/><path d="M92 25 Q97 31 103 29 Q98 23 92 25Z" fill="currentColor"/></svg></div>
 
   <section id="solutions" class="solutions">
     <div class="container">
@@ -364,38 +379,16 @@ a.contact-row:hover{ background:var(--green-pale); }
         <h2 id="solutions-title">Pourquoi choisir Agbélé-Alafia ?</h2>
         <p class="section-intro" id="solutions-intro"></p>
       </div>
-      <div class="solutions-visual reveal" aria-hidden="true">
-        <img src="images/nature.jpg" alt="">
-      </div>
+      <div class="solutions-visual reveal" aria-hidden="true"><img src="images/nature.jpg" alt=""></div>
       <div class="card-grid">
-        <article class="card reveal">
-          <span class="card-icon" id="sol-icon-1">🌿</span>
-          <h3 id="sol-title-1">Soutien Naturel Ciblé</h3>
-          <p id="sol-text-1"></p>
-        </article>
-        <article class="card reveal">
-          <span class="card-icon" id="sol-icon-2">✨</span>
-          <h3 id="sol-title-2">Patrimoine et Efficacité</h3>
-          <p id="sol-text-2"></p>
-        </article>
-        <article class="card reveal">
-          <span class="card-icon" id="sol-icon-3">💪</span>
-          <h3 id="sol-title-3">La Force de la Racine</h3>
-          <p id="sol-text-3"></p>
-        </article>
+        <article class="card reveal"><span class="card-icon" id="sol-icon-1">🌿</span><h3 id="sol-title-1">Soutien Naturel Ciblé</h3><p id="sol-text-1"></p></article>
+        <article class="card reveal"><span class="card-icon" id="sol-icon-2">✨</span><h3 id="sol-title-2">Patrimoine et Efficacité</h3><p id="sol-text-2"></p></article>
+        <article class="card reveal"><span class="card-icon" id="sol-icon-3">💪</span><h3 id="sol-title-3">La Force de la Racine</h3><p id="sol-text-3"></p></article>
       </div>
     </div>
   </section>
 
-  <div class="divider on-pale" aria-hidden="true">
-    <svg class="sprig" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M6 20 Q40 4 60 20 Q80 36 114 20" stroke="currentColor" stroke-width="1.4"/>
-      <path d="M28 14 Q33 7 40 8 Q35 15 28 14Z" fill="currentColor"/>
-      <path d="M56 27 Q51 33 44 32 Q49 25 56 27Z" fill="currentColor"/>
-      <path d="M78 13 Q83 6 90 7 Q85 14 78 13Z" fill="currentColor"/>
-      <path d="M92 25 Q97 31 103 29 Q98 23 92 25Z" fill="currentColor"/>
-    </svg>
-  </div>
+  <div class="divider on-pale" aria-hidden="true"><svg class="sprig" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 20 Q40 4 60 20 Q80 36 114 20" stroke="currentColor" stroke-width="1.4"/><path d="M28 14 Q33 7 40 8 Q35 15 28 14Z" fill="currentColor"/><path d="M56 27 Q51 33 44 32 Q49 25 56 27Z" fill="currentColor"/><path d="M78 13 Q83 6 90 7 Q85 14 78 13Z" fill="currentColor"/><path d="M92 25 Q97 31 103 29 Q98 23 92 25Z" fill="currentColor"/></svg></div>
 
   <section id="fertilite" class="fertilite on-pale">
     <div class="container">
@@ -404,33 +397,17 @@ a.contact-row:hover{ background:var(--green-pale); }
         <h2 id="fert-title">Votre chemin vers la parentalité commence ici !</h2>
       </div>
       <div class="fertilite-grid">
-        <div class="fertilite-media reveal">
-          <img src="images/fertilite.jpg" alt="Couple souriant, accompagnement fertilité Agbélé-Alafia">
-        </div>
+        <div class="fertilite-media reveal"><img src="images/fertilite.jpg" alt="Couple souriant, accompagnement fertilité Agbélé-Alafia"></div>
         <div class="fertilite-columns reveal">
-          <div class="fertilite-col">
-            <h3 id="fert-femme-title">Pour Madame</h3>
-            <p id="fert-femme-text"></p>
-          </div>
+          <div class="fertilite-col"><h3 id="fert-femme-title">Pour Madame</h3><p id="fert-femme-text"></p></div>
           <div class="fertilite-sep" aria-hidden="true"></div>
-          <div class="fertilite-col">
-            <h3 id="fert-homme-title">Pour Monsieur</h3>
-            <p id="fert-homme-text"></p>
-          </div>
+          <div class="fertilite-col"><h3 id="fert-homme-title">Pour Monsieur</h3><p id="fert-homme-text"></p></div>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="divider" aria-hidden="true">
-    <svg class="sprig" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M6 20 Q40 4 60 20 Q80 36 114 20" stroke="currentColor" stroke-width="1.4"/>
-      <path d="M28 14 Q33 7 40 8 Q35 15 28 14Z" fill="currentColor"/>
-      <path d="M56 27 Q51 33 44 32 Q49 25 56 27Z" fill="currentColor"/>
-      <path d="M78 13 Q83 6 90 7 Q85 14 78 13Z" fill="currentColor"/>
-      <path d="M92 25 Q97 31 103 29 Q98 23 92 25Z" fill="currentColor"/>
-    </svg>
-  </div>
+  <div class="divider" aria-hidden="true"><svg class="sprig" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 20 Q40 4 60 20 Q80 36 114 20" stroke="currentColor" stroke-width="1.4"/><path d="M28 14 Q33 7 40 8 Q35 15 28 14Z" fill="currentColor"/><path d="M56 27 Q51 33 44 32 Q49 25 56 27Z" fill="currentColor"/><path d="M78 13 Q83 6 90 7 Q85 14 78 13Z" fill="currentColor"/><path d="M92 25 Q97 31 103 29 Q98 23 92 25Z" fill="currentColor"/></svg></div>
 
   <section id="infections" class="infections">
     <div class="container">
@@ -440,67 +417,48 @@ a.contact-row:hover{ background:var(--green-pale); }
         <p class="section-intro" id="infections-intro"></p>
       </div>
       <div class="card-grid">
-        <article class="card reveal">
-          <span class="card-icon" id="inf-icon-1">🎯</span>
-          <h3 id="inf-title-1">Action Ciblée</h3>
-          <p id="inf-text-1"></p>
-        </article>
-        <article class="card reveal">
-          <span class="card-icon" id="inf-icon-2">🌿</span>
-          <h3 id="inf-title-2">Force Naturelle</h3>
-          <p id="inf-text-2"></p>
-        </article>
-        <article class="card reveal">
-          <span class="card-icon" id="inf-icon-3">🌸</span>
-          <h3 id="inf-title-3">Bien-être Retrouvé</h3>
-          <p id="inf-text-3"></p>
-        </article>
+        <article class="card reveal"><span class="card-icon" id="inf-icon-1">🎯</span><h3 id="inf-title-1">Action Ciblée</h3><p id="inf-text-1"></p></article>
+        <article class="card reveal"><span class="card-icon" id="inf-icon-2">🌿</span><h3 id="inf-title-2">Force Naturelle</h3><p id="inf-text-2"></p></article>
+        <article class="card reveal"><span class="card-icon" id="inf-icon-3">🌸</span><h3 id="inf-title-3">Bien-être Retrouvé</h3><p id="inf-text-3"></p></article>
       </div>
     </div>
   </section>
 
-  <div class="divider on-deep" aria-hidden="true">
-    <svg class="sprig" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M6 20 Q40 4 60 20 Q80 36 114 20" stroke="currentColor" stroke-width="1.4"/>
-      <path d="M28 14 Q33 7 40 8 Q35 15 28 14Z" fill="currentColor"/>
-      <path d="M56 27 Q51 33 44 32 Q49 25 56 27Z" fill="currentColor"/>
-      <path d="M78 13 Q83 6 90 7 Q85 14 78 13Z" fill="currentColor"/>
-      <path d="M92 25 Q97 31 103 29 Q98 23 92 25Z" fill="currentColor"/>
-    </svg>
-  </div>
+  <div class="divider on-pale" aria-hidden="true"><svg class="sprig" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 20 Q40 4 60 20 Q80 36 114 20" stroke="currentColor" stroke-width="1.4"/><path d="M28 14 Q33 7 40 8 Q35 15 28 14Z" fill="currentColor"/><path d="M56 27 Q51 33 44 32 Q49 25 56 27Z" fill="currentColor"/><path d="M78 13 Q83 6 90 7 Q85 14 78 13Z" fill="currentColor"/><path d="M92 25 Q97 31 103 29 Q98 23 92 25Z" fill="currentColor"/></svg></div>
 
-  <section id="contact" class="contact" style="background:var(--green-deep); color:var(--text-invert);">
+  <section id="videos" class="videos on-pale">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow" id="videos-eyebrow">Vidéos &amp; témoignages</p>
+        <h2 id="videos-title">Agbélé-Alafia en images</h2>
+        <p class="section-intro" id="videos-intro"></p>
+      </div>
+      <div class="video-grid reveal" id="video-grid"></div>
+      <div class="video-more reveal" id="video-more"></div>
+      <p class="video-note">La lecture des vidéos utilise le lecteur officiel Facebook et nécessite une connexion internet, même si le reste du site fonctionne hors-ligne.</p>
+    </div>
+  </section>
+
+  <div class="divider on-deep" aria-hidden="true"><svg class="sprig" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 20 Q40 4 60 20 Q80 36 114 20" stroke="currentColor" stroke-width="1.4"/><path d="M28 14 Q33 7 40 8 Q35 15 28 14Z" fill="currentColor"/><path d="M56 27 Q51 33 44 32 Q49 25 56 27Z" fill="currentColor"/><path d="M78 13 Q83 6 90 7 Q85 14 78 13Z" fill="currentColor"/><path d="M92 25 Q97 31 103 29 Q98 23 92 25Z" fill="currentColor"/></svg></div>
+
+  <section id="contact" class="contact">
     <div class="container">
       <div class="section-head reveal">
         <p class="eyebrow" id="contact-eyebrow">Contact</p>
-        <h2 id="contact-title" style="color:var(--text-invert);">Contactez-nous et Commandez</h2>
-        <p class="section-intro" id="contact-intro" style="color:#CFE0D6;"></p>
+        <h2 id="contact-title">Contactez-nous et Commandez</h2>
+        <p class="section-intro" id="contact-intro"></p>
       </div>
       <div class="contact-grid">
         <div class="contact-info reveal">
-          <a class="contact-row" id="contact-phone1-link" href="tel:">
-            <span class="ico">📞</span><span id="contact-phone1"></span>
-          </a>
-          <a class="contact-row" id="contact-phone2-link" href="tel:">
-            <span class="ico">📞</span><span id="contact-phone2"></span>
-          </a>
-          <a class="contact-row" id="contact-whatsapp-link" href="https://wa.me/" target="_blank" rel="noopener">
-            <span class="ico">💬</span><span>WhatsApp : <span id="contact-whatsapp"></span></span>
-          </a>
-          <a class="contact-row" id="contact-email-link" href="mailto:">
-            <span class="ico">📧</span><span id="contact-email"></span>
-          </a>
-          <div class="contact-row contact-address">
-            <span class="ico">📍</span><span id="contact-address"></span>
-          </div>
+          <a class="contact-row" id="contact-phone1-link" href="tel:"><span class="icon-badge"><svg class="icon" aria-hidden="true"><use href="#icon-phone"/></svg></span><span id="contact-phone1"></span></a>
+          <a class="contact-row" id="contact-phone2-link" href="tel:"><span class="icon-badge"><svg class="icon" aria-hidden="true"><use href="#icon-phone"/></svg></span><span id="contact-phone2"></span></a>
+          <a class="contact-row" id="contact-whatsapp-link" href="https://wa.me/" target="_blank" rel="noopener"><span class="icon-badge"><svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg></span><span>WhatsApp : <span id="contact-whatsapp"></span></span></a>
+          <a class="contact-row" id="contact-email-link" href="mailto:"><span class="icon-badge"><svg class="icon" aria-hidden="true"><use href="#icon-mail"/></svg></span><span id="contact-email"></span></a>
+          <div class="contact-row contact-address"><span class="icon-badge"><svg class="icon" aria-hidden="true"><use href="#icon-pin"/></svg></span><span id="contact-address"></span></div>
         </div>
         <div class="reveal">
-          <div class="delivery-banner">
-            <span class="ico">🚚</span><span id="contact-delivery"></span>
-          </div>
-          <a class="fb-btn" id="contact-fb-link" href="#" target="_blank" rel="noopener" style="color:#fff; border-color:var(--gold-root);">
-            Visitez notre page Facebook →
-          </a>
+          <div class="delivery-banner"><span class="icon-badge"><svg class="icon" aria-hidden="true"><use href="#icon-truck"/></svg></span><span id="contact-delivery"></span></div>
+          <a class="fb-btn" id="contact-fb-link" href="#" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-facebook"/></svg> Visitez notre page Facebook →</a>
         </div>
       </div>
     </div>
@@ -516,14 +474,11 @@ a.contact-row:hover{ background:var(--green-pale); }
 
 <script>
 /* ==========================================================================
-   CONTENU PAR DÉFAUT — utilisé uniquement si data.json est introuvable
-   (par ex. si le fichier est ouvert directement depuis l'ordinateur au lieu
-   d'être servi par GitHub Pages). Sur GitHub Pages, data.json est TOUJOURS
-   utilisé en priorité.
+   CONTENU PAR DÉFAUT — repli si data.json est introuvable
    ========================================================================== */
 const DEFAULT_DATA = {
   siteTitle:"Cabinet Agbélé - Alafia",
-  nav:{accueil:"Accueil",solutions:"Nos Solutions",fertilite:"Fertilité",infections:"Infections",contact:"Contact"},
+  nav:{accueil:"Accueil",solutions:"Nos Solutions",fertilite:"Fertilité",infections:"Infections",videos:"Vidéos",contact:"Contact"},
   hero:{eyebrow:"Santé naturelle · Cotonou",title:"Santé - Fertilité chez la femme et l'homme",
     text:"Découvrez notre approche naturelle pour soutenir votre bien-être face aux défis du Diabète, de la Prostate et de l'Hypertension Artérielle. Des compléments nutritionnels élaborés à partir de la puissance ancestrale des plantes et racines médicinales soigneusement sélectionnées.",
     cta:"Nos Solutions Naturelles"},
@@ -540,6 +495,22 @@ const DEFAULT_DATA = {
     item1_icon:"🎯",item1_title:"Action Ciblée",item1_text:"Des extraits de racines et de plantes pour le soutien du système immunitaire et de purification.",
     item2_icon:"🌿",item2_title:"Force Naturelle",item2_text:"Un concentré d'actifs pour combattre efficacement et prévenir la récidive.",
     item3_icon:"🌸",item3_title:"Bien-être Retrouvé",item3_text:"Contribuez à l'équilibre et à l'harmonie interne de votre corps."},
+  videos:{eyebrow:"Vidéos & témoignages",title:"Agbélé-Alafia en images",
+    intro:"Retrouvez nos publications et témoignages, directement issus de notre page Facebook officielle.",
+    items:[
+      {label:"Vidéo 1",url:"https://www.facebook.com/share/v/1DF4SzppKY/"},
+      {label:"Vidéo 2",url:"https://www.facebook.com/share/v/1DM6QVG8kz/"},
+      {label:"Vidéo 3",url:"https://www.facebook.com/share/v/1Te74xaLpu/"},
+      {label:"Vidéo 4",url:"https://www.facebook.com/share/v/1cP71ZPJs2/"},
+      {label:"Vidéo 5",url:"https://www.facebook.com/share/r/1DTzYFU6d8/"},
+      {label:"Vidéo 6",url:"https://www.facebook.com/share/v/1DLRyQWcvA/"},
+      {label:"Vidéo 7",url:"https://www.facebook.com/share/r/17yimfwj8P/"},
+      {label:"Vidéo 8",url:"https://www.facebook.com/share/1F8iReqeMb/"}
+    ],
+    eventLabel:"📅 Événement : Agbélé-Alafia Santé et Fertilité",
+    eventUrl:"https://facebook.com/events/s/agbele-alafia-sante-et-fertili/1687059961923750/",
+    postLabel:"📄 Publication Facebook",
+    postUrl:"https://www.facebook.com/61557355948928/posts/122245858208245198/?app=fbl"},
   contact:{eyebrow:"Contact",title:"Contactez-nous et Commandez",
     intro:"Notre équipe est là pour vous accompagner sereinement vers votre projet de famille.",
     phone1:"+229 01 57 35 36 35",phone2:"01 96 56 37 89",whatsapp:"57353635",email:"agbelealafia@gmail.com",
@@ -549,53 +520,58 @@ const DEFAULT_DATA = {
   footer:{text:"Cabinet Agbélé-Alafia : Pour que la vie continue.",legal:"© 2026 Cabinet Agbélé - Alafia. Tous droits réservés."}
 };
 
-/* ==========================================================================
-   MOTEUR D'AFFICHAGE — injecte les données dans le HTML par identifiant
-   ========================================================================== */
+/* ---------- Rendu du contenu texte ---------- */
 function setText(id, val){ const el=document.getElementById(id); if(el && val!=null && val!=="") el.textContent=val; }
 function setHref(id, val){ const el=document.getElementById(id); if(el && val) el.setAttribute('href', val); }
 function digits(str){ return (str||"").replace(/[^\d+]/g,""); }
+
+function renderVideos(d){
+  const grid = document.getElementById('video-grid');
+  const more = document.getElementById('video-more');
+  if(!grid || !d.videos) return;
+  grid.innerHTML = '';
+  (d.videos.items||[]).forEach((item) => {
+    const card = document.createElement('div');
+    card.className = 'video-card';
+    const embed = 'https://www.facebook.com/plugins/video.php?href=' + encodeURIComponent(item.url) + '&show_text=false';
+    card.innerHTML = `<div class="video-frame-wrap"><iframe src="${embed}" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="${item.label}"></iframe></div>
+      <div class="video-caption"><span>${item.label}</span><a href="${item.url}" target="_blank" rel="noopener">Ouvrir ↗</a></div>`;
+    grid.appendChild(card);
+  });
+  if(more){
+    more.innerHTML = '';
+    if(d.videos.eventUrl){ more.innerHTML += `<a href="${d.videos.eventUrl}" target="_blank" rel="noopener">${d.videos.eventLabel||'Événement'}</a>`; }
+    if(d.videos.postUrl){ more.innerHTML += `<a href="${d.videos.postUrl}" target="_blank" rel="noopener">${d.videos.postLabel||'Publication'}</a>`; }
+  }
+}
 
 function renderSite(d){
   try{
     document.title = d.siteTitle + " | Santé & Fertilité Naturelle";
     setText('brand-name', d.siteTitle);
+    setText('nav-accueil', d.nav.accueil); setText('nav-solutions', d.nav.solutions); setText('nav-fertilite', d.nav.fertilite);
+    setText('nav-infections', d.nav.infections); setText('nav-videos', d.nav.videos); setText('nav-contact', d.nav.contact);
 
-    setText('nav-accueil', d.nav.accueil);
-    setText('nav-solutions', d.nav.solutions);
-    setText('nav-fertilite', d.nav.fertilite);
-    setText('nav-infections', d.nav.infections);
-    setText('nav-contact', d.nav.contact);
+    setText('hero-eyebrow', d.hero.eyebrow); setText('hero-title', d.hero.title); setText('hero-text', d.hero.text); setText('hero-cta', d.hero.cta);
 
-    setText('hero-eyebrow', d.hero.eyebrow);
-    setText('hero-title', d.hero.title);
-    setText('hero-text', d.hero.text);
-    setText('hero-cta', d.hero.cta);
-
-    setText('solutions-eyebrow', d.solutions.eyebrow);
-    setText('solutions-title', d.solutions.title);
-    setText('solutions-intro', d.solutions.intro);
+    setText('solutions-eyebrow', d.solutions.eyebrow); setText('solutions-title', d.solutions.title); setText('solutions-intro', d.solutions.intro);
     setText('sol-icon-1', d.solutions.item1_icon); setText('sol-title-1', d.solutions.item1_title); setText('sol-text-1', d.solutions.item1_text);
     setText('sol-icon-2', d.solutions.item2_icon); setText('sol-title-2', d.solutions.item2_title); setText('sol-text-2', d.solutions.item2_text);
     setText('sol-icon-3', d.solutions.item3_icon); setText('sol-title-3', d.solutions.item3_title); setText('sol-text-3', d.solutions.item3_text);
 
-    setText('fert-eyebrow', d.fertilite.eyebrow);
-    setText('fert-title', d.fertilite.title);
-    setText('fert-femme-title', d.fertilite.femme_title);
-    setText('fert-femme-text', d.fertilite.femme_text);
-    setText('fert-homme-title', d.fertilite.homme_title);
-    setText('fert-homme-text', d.fertilite.homme_text);
+    setText('fert-eyebrow', d.fertilite.eyebrow); setText('fert-title', d.fertilite.title);
+    setText('fert-femme-title', d.fertilite.femme_title); setText('fert-femme-text', d.fertilite.femme_text);
+    setText('fert-homme-title', d.fertilite.homme_title); setText('fert-homme-text', d.fertilite.homme_text);
 
-    setText('infections-eyebrow', d.infections.eyebrow);
-    setText('infections-title', d.infections.title);
-    setText('infections-intro', d.infections.intro);
+    setText('infections-eyebrow', d.infections.eyebrow); setText('infections-title', d.infections.title); setText('infections-intro', d.infections.intro);
     setText('inf-icon-1', d.infections.item1_icon); setText('inf-title-1', d.infections.item1_title); setText('inf-text-1', d.infections.item1_text);
     setText('inf-icon-2', d.infections.item2_icon); setText('inf-title-2', d.infections.item2_title); setText('inf-text-2', d.infections.item2_text);
     setText('inf-icon-3', d.infections.item3_icon); setText('inf-title-3', d.infections.item3_title); setText('inf-text-3', d.infections.item3_text);
 
-    setText('contact-eyebrow', d.contact.eyebrow);
-    setText('contact-title', d.contact.title);
-    setText('contact-intro', d.contact.intro);
+    setText('videos-eyebrow', d.videos.eyebrow); setText('videos-title', d.videos.title); setText('videos-intro', d.videos.intro);
+    renderVideos(d);
+
+    setText('contact-eyebrow', d.contact.eyebrow); setText('contact-title', d.contact.title); setText('contact-intro', d.contact.intro);
     setText('contact-phone1', d.contact.phone1); setHref('contact-phone1-link', 'tel:' + digits(d.contact.phone1));
     setText('contact-phone2', d.contact.phone2); setHref('contact-phone2-link', 'tel:' + digits(d.contact.phone2));
     setText('contact-whatsapp', d.contact.whatsapp); setHref('contact-whatsapp-link', 'https://wa.me/229' + digits(d.contact.whatsapp).replace('+',''));
@@ -604,8 +580,7 @@ function renderSite(d){
     setText('contact-delivery', d.contact.deliveryText);
     setHref('contact-fb-link', d.contact.facebook);
 
-    setText('footer-text', d.footer.text);
-    setText('footer-legal', d.footer.legal);
+    setText('footer-text', d.footer.text); setText('footer-legal', d.footer.legal);
   }catch(e){ console.error("Erreur d'affichage du contenu :", e); }
 }
 
@@ -613,6 +588,56 @@ fetch('data.json', {cache:'no-store'})
   .then(r => { if(!r.ok) throw new Error('data.json introuvable'); return r.json(); })
   .then(data => renderSite(data))
   .catch(() => renderSite(DEFAULT_DATA));
+
+/* ==========================================================================
+   THÈME CLAIR / SOMBRE
+   ========================================================================== */
+const THEME_KEY = 'agbele-alafia-theme';
+function applyTheme(theme){
+  document.documentElement.setAttribute('data-theme', theme);
+  const use = document.querySelector('#theme-icon use');
+  if(use) use.setAttribute('href', theme === 'dark' ? '#icon-sun' : '#icon-moon');
+  const btn = document.getElementById('theme-toggle');
+  if(btn) btn.setAttribute('aria-label', theme === 'dark' ? 'Passer au thème clair' : 'Passer au thème sombre');
+}
+let storedTheme = null;
+try{ storedTheme = localStorage.getItem(THEME_KEY); }catch(e){}
+const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+applyTheme(storedTheme || (systemPrefersDark ? 'dark' : 'light'));
+
+document.getElementById('theme-toggle').addEventListener('click', () => {
+  const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  applyTheme(next);
+  try{ localStorage.setItem(THEME_KEY, next); }catch(e){}
+});
+
+/* ==========================================================================
+   INSTALLATION PWA (bouton "Installer")
+   ========================================================================== */
+let deferredPrompt = null;
+const installBtn = document.getElementById('install-btn');
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  installBtn.classList.add('show');
+});
+installBtn.addEventListener('click', async () => {
+  if(!deferredPrompt) return;
+  deferredPrompt.prompt();
+  await deferredPrompt.userChoice;
+  deferredPrompt = null;
+  installBtn.classList.remove('show');
+});
+window.addEventListener('appinstalled', () => { installBtn.classList.remove('show'); });
+
+/* ==========================================================================
+   ENREGISTREMENT DU SERVICE WORKER (fonctionnement hors-ligne)
+   ========================================================================== */
+if('serviceWorker' in navigator){
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  });
+}
 
 /* ==========================================================================
    MENU MOBILE
@@ -635,17 +660,13 @@ const revealEls = document.querySelectorAll('.reveal');
 if('IntersectionObserver' in window){
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('is-visible'); revealObserver.unobserve(entry.target); } });
-  }, {threshold:0.15});
+  }, {threshold:0.12});
   revealEls.forEach(el => revealObserver.observe(el));
 
   const navLinks = document.querySelectorAll('.site-nav a[data-nav]');
-  const sections = ['accueil','solutions','fertilite','infections','contact'].map(id => document.getElementById(id)).filter(Boolean);
+  const sections = ['accueil','solutions','fertilite','infections','videos','contact'].map(id => document.getElementById(id)).filter(Boolean);
   const navObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        navLinks.forEach(l => l.classList.toggle('active', l.dataset.nav === entry.target.id));
-      }
-    });
+    entries.forEach(entry => { if(entry.isIntersecting){ navLinks.forEach(l => l.classList.toggle('active', l.dataset.nav === entry.target.id)); } });
   }, {rootMargin:'-45% 0px -50% 0px'});
   sections.forEach(s => navObserver.observe(s));
 }else{

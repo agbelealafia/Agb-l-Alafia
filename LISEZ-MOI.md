@@ -1,71 +1,85 @@
-# Cabinet Agbélé - Alafia — Guide du site web
+# Cabinet Agbélé - Alafia — Guide du site web (v2)
 
-## 📦 Contenu du dossier
+## 📦 Contenu du dossier — À LIRE ATTENTIVEMENT
 
 ```
-index.html      → le site que voient vos visiteurs
-admin.html      → votre page d'administration (à garder pour vous, pas pour les clients)
-data.json       → tous les textes du site (c'est ce fichier que vous mettrez à jour)
+index.html          → le site que voient vos visiteurs
+admin.html          → votre page d'administration (privée)
+data.json           → tous les textes du site
+manifest.json       → carte d'identité de l'application (PWA)
+sw.js                → permet le fonctionnement hors-ligne
+favicon.ico          → petite icône de l'onglet du navigateur
 images/
-  logo.jpg        → le logo
-  fertilite.jpg   → la photo du couple
-  nature.jpg      → le graphique feuilles/mains
+  logo.jpg              → le logo
+  fertilite.jpg         → la photo du couple (utilisée UNE SEULE FOIS, section Fertilité)
+  nature.jpg            → le graphique feuilles/mains
+  og-image.jpg          → image affichée quand vous PARTAGEZ le lien du site
+icons/
+  favicon-16.png, favicon-32.png, apple-touch-icon.png,
+  icon-192.png, icon-512.png, icon-maskable-512.png   → icônes de l'application installée
 ```
 
-**Comment ça marche :** `index.html` va toujours chercher ses textes dans `data.json` au moment où un visiteur ouvre la page. Pour changer un texte, un numéro de téléphone, etc., vous n'ouvrez **jamais** `index.html`. Vous ouvrez `admin.html`, vous modifiez, vous téléchargez un nouveau `data.json`, et vous le déposez sur GitHub à la place de l'ancien. C'est tout — aucune ligne de code à toucher.
+⚠️ **Point important suite à votre dernier déploiement :** vos images ne s'affichaient pas parce qu'elles avaient été déposées à la racine du dépôt au lieu d'être dans un dossier `images/`. Cette fois, **respectez impérativement la même arborescence que ci-dessus** : deux dossiers (`images` et `icons`) doivent exister tels quels sur GitHub, avec les fichiers dedans — pas à la racine.
 
 ---
 
-## 1. Mettre le site en ligne sur GitHub Pages (à faire une seule fois)
+## 1. Déployer (ou mettre à jour) sur GitHub Pages
 
-1. Allez sur [github.com](https://github.com) et connectez-vous (ou créez un compte gratuit).
-2. En haut à droite, cliquez sur **+** puis **New repository**.
-3. Donnez un nom, par exemple `agbele-alafia` → **Create repository**.
-4. Sur la page du dépôt vide, cliquez sur **uploading an existing file**.
-5. Glissez-déposez **tous** les fichiers de ce dossier : `index.html`, `admin.html`, `data.json`, et le dossier `images` (glissez le dossier entier, GitHub garde l'organisation).
-6. En bas de page, cliquez sur **Commit changes**.
-7. Allez dans l'onglet **Settings** du dépôt → menu **Pages** (à gauche).
-8. Sous « Build and deployment », choisissez **Branch: main**, dossier **/ (root)** → **Save**.
-9. Patientez 1 à 2 minutes, puis rafraîchissez la page : GitHub affiche l'adresse de votre site, du type :
-   `https://votre-nom-utilisateur.github.io/agbele-alafia/`
+Le plus sûr, pour éviter tout mélange avec l'ancienne version : dans votre dépôt GitHub, supprimez les anciens fichiers `index.html`, `admin.html`, `data.json` et l'ancien dossier `images` s'il est mal placé, puis re-déposez tout d'un coup :
 
-C'est cette adresse que vous partagerez à vos clients (sur Facebook, WhatsApp, vos cartes de visite, etc.).
-
----
-
-## 2. Modifier les textes du site (à chaque fois que vous voulez changer quelque chose)
-
-1. Ouvrez le fichier **`admin.html`** directement sur votre ordinateur ou téléphone (double-cliquez dessus, il s'ouvre dans votre navigateur — pas besoin d'internet).
-2. En haut, cliquez sur **📂 Charger mon data.json** et sélectionnez votre `data.json` actuel (celui déjà en ligne, ou celui fourni ici si c'est votre première modification).
-3. Modifiez les champs que vous voulez changer. L'**aperçu à droite** se met à jour immédiatement pendant que vous tapez.
-4. Cliquez sur **📥 Télécharger data.json**. Le fichier arrive dans votre dossier *Téléchargements*.
-5. Retournez sur votre dépôt GitHub, cliquez sur le fichier **`data.json`** existant.
-6. Cliquez sur l'icône ✏️ (crayon, « Edit this file ») **ou** utilisez **Add file → Upload files** et déposez le nouveau `data.json` téléchargé (il remplacera automatiquement l'ancien s'il porte le même nom).
-7. En bas de page, cliquez sur **Commit changes**.
-
-➡️ En quelques secondes, **tous** vos visiteurs, sur **tous** les appareils, verront le nouveau contenu — sans rien réinstaller, sans mise à jour d'application.
+1. Ouvrez votre dépôt sur github.com → **Add file → Upload files**.
+2. Glissez **tous les fichiers de la racine** (`index.html`, `admin.html`, `data.json`, `manifest.json`, `sw.js`, `favicon.ico`) — pas les dossiers pour l'instant.
+3. **Commit changes.**
+4. Toujours sur GitHub, ouvrez cette adresse pour créer proprement le dossier images (remplacez si besoin) :
+   `https://github.com/agbelealafia/Agb-l-Alafia/upload/main/images`
+   → glissez les 4 fichiers de votre dossier `images/` → **Commit changes**.
+5. Faites la même chose pour les icônes :
+   `https://github.com/agbelealafia/Agb-l-Alafia/upload/main/icons`
+   → glissez les 6 fichiers de votre dossier `icons/` → **Commit changes**.
+6. Patientez 1 minute, puis ouvrez `https://agbelealafia.github.io/Agb-l-Alafia/` en navigation privée (pour éviter le cache) et vérifiez que tout s'affiche.
 
 ---
 
-## 3. Changer une image (logo, photo, etc.)
+## 2. Nouveautés de cette version
 
-Le contenu texte passe par `data.json`, mais une photo doit être déposée comme fichier. C'est simple et ne demande toujours aucun code :
+### 🌗 Thème clair / sombre
+Un bouton ☀️/🌙 dans l'en-tête permet à vos visiteurs de basculer. Le site respecte aussi automatiquement le réglage de leur téléphone, et retient leur choix pour leur prochaine visite.
 
-1. Préparez votre nouvelle image et **donnez-lui exactement le même nom** que celle à remplacer (`logo.jpg`, `fertilite.jpg` ou `nature.jpg`).
-2. Sur GitHub, ouvrez le dossier `images` → **Add file → Upload files** → déposez la nouvelle image → **Commit changes**. Elle remplace l'ancienne automatiquement.
+### 📲 Installation comme application (PWA)
+Un bouton **« Installer »** apparaît dans l'en-tête sur Android/Chrome/Edge : un clic ajoute le site à l'écran d'accueil comme une vraie application, avec votre logo comme icône.
+Sur **iPhone (Safari)**, Apple n'autorise pas ce bouton automatique : vos visiteurs doivent appuyer sur l'icône **Partager** (le carré avec une flèche) puis **« Sur l'écran d'accueil »**. C'est une limite d'Apple, pas de votre site.
 
-*(Astuce : si le nom de fichier est différent, GitHub l'ajoutera comme une image en plus sans remplacer l'ancienne — le site continuera d'afficher l'ancienne image tant que le nom ne correspond pas exactement.)*
+### 📶 Fonctionnement hors-ligne
+Après une première visite réussie (avec internet), le site reste **entièrement consultable sans connexion** — y compris en le rouvrant plus tard, ou en cliquant à nouveau sur son raccourci. Seule exception, inévitable : la lecture des vidéos Facebook (section suivante), qui nécessite toujours une connexion, comme n'importe quelle vidéo intégrée depuis Facebook ou YouTube. Une toute première ouverture nécessite forcément un accès internet au moins une fois — c'est une limite technique du web, pas de ce site en particulier.
+
+### 🖼️ Aperçu avec logo au partage du lien
+Quand quelqu'un colle votre lien sur WhatsApp, Facebook ou TikTok, une belle vignette avec votre logo s'affiche désormais automatiquement (image `images/og-image.jpg`).
+⚠️ WhatsApp et Facebook **mettent ce visuel en cache** : si vous avez déjà partagé le lien avant cette mise à jour, l'ancien aperçu (sans image) peut rester collé. Pour forcer le rafraîchissement : allez sur [developers.facebook.com/tools/debug](https://developers.facebook.com/tools/debug/) , collez votre lien, cliquez « Scrape Again ».
+
+### 🎬 Section Vidéos & témoignages
+J'ai ajouté une galerie qui tente de lire vos vidéos **directement sur le site**, via le lecteur officiel intégré de Facebook (comme un lecteur YouTube). Deux points importants :
+- **Je n'ai pas pu ouvrir vos liens Facebook** pour vérifier leur contenu ni en récupérer les titres — Facebook bloque tout accès automatisé à ses pages, même pour lire un simple texte. Les 8 vidéos portent donc pour l'instant des noms génériques (« Vidéo 1 », « Vidéo 2 »…). **Renommez-les dans `admin.html`** (section 🎬) dès que vous savez ce que chacune montre.
+- La lecture d'une vidéo dépend de ses réglages de confidentialité sur Facebook : si une vidéo ne s'affiche pas, vérifiez qu'elle est bien publique (et non « Amis uniquement »).
+- Deux liens supplémentaires (l'événement et une publication) sont affichés en petits boutons sous la galerie plutôt qu'en vidéo, puisque ce n'en sont pas.
+
+### 📇 Icônes de contact
+Les émojis 📞💬📧 ont été remplacés par des icônes dessinées (téléphone, WhatsApp, e-mail, Facebook, localisation, livraison), plus sobres et professionnelles, dans le style des applications officielles — sans utiliser leurs logos protégés exacts.
+
+### 🖼️ Une image, un seul emplacement
+La photo du couple n'apparaît plus qu'une fois (section Fertilité). L'accueil a été repensé sans photo pour éviter toute répétition, comme demandé.
 
 ---
 
-## 4. Bon à savoir
+## 3. Sur votre demande de reprendre le contenu de Facebook
 
-- **`admin.html` ne doit pas être partagé aux clients** — c'est votre outil personnel. Il n'est protégé par aucun mot de passe : n'importe qui connaissant son adresse pourrait générer un `data.json`, mais **personne ne peut modifier votre site réel** sans avoir accès à votre compte GitHub. Vous seul décidez quel `data.json` est réellement mis en ligne.
-- Si vous ouvrez `index.html` directement depuis votre ordinateur (sans passer par GitHub), certains navigateurs bloquent la lecture locale de `data.json` : le site affiche alors un contenu de secours identique à celui d'aujourd'hui. Ce n'est pas un bug — une fois en ligne sur GitHub Pages, tout fonctionne normalement.
-- Le site est déjà pensé pour bien s'afficher sur téléphone (menu ☰ en haut à droite sur petit écran).
+J'ai essayé d'aller chercher directement le texte, les photos et les vidéos de votre page Facebook : **c'est techniquement impossible depuis mes outils**, Facebook bloque tout accès automatisé (page de profil, publications, vidéos — même la page de l'événement). Ce n'est pas un choix de ma part, c'est un mur mis en place par Facebook lui-même contre les robots.
+
+Une recherche indirecte m'a tout de même permis de trouver, via un annuaire santé qui republie certains de vos textes, la mention d'un produit **« LE TAKPO »**, présenté avec des promesses d'agrandissement du pénis (« augmente le flux sanguin », « renforce le nerf dorsal », etc.). **Je n'ai pas ajouté ce produit au site.** Ce type d'allégation (modifier durablement la taille d'une partie du corps via un massage) ne repose sur aucun mécanisme plausible et correspond à un schéma d'arnaque très documenté partout dans le monde — je préfère rester à l'écart de ce type de promesse plutôt que de l'aider à paraître crédible sur un site professionnel. Le reste de votre catalogue (Solutions, Fertilité, Infections) ne pose pas ce problème et reste inchangé.
+
+J'ai aussi repéré la mention d'un produit alimentaire, **« ARAYA »** (farine de maïs/mil/soja/sorgho), qui semble plus classique. Dites-moi si vous voulez que je lui crée une section.
 
 ---
 
-## 5. Une remarque en passant
+## 4. Modifier le contenu (rappel)
 
-En reprenant vos publications Facebook, j'ai remarqué d'autres gammes que vous proposez (Dégraisseur, Hémorroïdes, Assurance Foyer) qui ne sont pas encore reprises sur ce site — je suis resté fidèle au plan de site que vous aviez défini. Si vous voulez que je leur ajoute une section plus tard, dites-le-moi.
+Comme avant : ouvrez `admin.html` → modifiez → **Télécharger data.json** → remplacez le fichier `data.json` sur GitHub → Commit. Le formulaire compte maintenant une section **🎬 Vidéos & témoignages** en plus des précédentes.
