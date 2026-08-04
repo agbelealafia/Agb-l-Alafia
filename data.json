@@ -1,6 +1,13 @@
 {
   "siteTitle": "Cabinet Agbélé - Alafia",
 
+  "sections": {
+    "solutions": true,
+    "fertilite": true,
+    "infections": true,
+    "videos": true
+  },
+
   "nav": {
     "accueil": "Accueil",
     "solutions": "Nos Solutions",
@@ -59,16 +66,25 @@
   "videos": {
     "eyebrow": "Vidéos & témoignages",
     "title": "Agbélé-Alafia en images",
-    "intro": "Retrouvez nos publications et témoignages, directement issus de notre page Facebook officielle.",
+    "intro": "17 vidéos et témoignages de nos clients — lecture directe, sans quitter le site.",
     "items": [
-      { "label": "Vidéo 1", "url": "https://www.facebook.com/share/v/1DF4SzppKY/" },
-      { "label": "Vidéo 2", "url": "https://www.facebook.com/share/v/1DM6QVG8kz/" },
-      { "label": "Vidéo 3", "url": "https://www.facebook.com/share/v/1Te74xaLpu/" },
-      { "label": "Vidéo 4", "url": "https://www.facebook.com/share/v/1cP71ZPJs2/" },
-      { "label": "Vidéo 5", "url": "https://www.facebook.com/share/r/1DTzYFU6d8/" },
-      { "label": "Vidéo 6", "url": "https://www.facebook.com/share/v/1DLRyQWcvA/" },
-      { "label": "Vidéo 7", "url": "https://www.facebook.com/share/r/17yimfwj8P/" },
-      { "label": "Vidéo 8", "url": "https://www.facebook.com/share/1F8iReqeMb/" }
+      { "id": "v1", "title": "Vidéo 1", "file": "VID-20260730-WA0051.mp4", "poster": "VID-20260730-WA0051-poster.jpg", "active": true },
+      { "id": "v2", "title": "Vidéo 2", "file": "VID-20260730-WA0052.mp4", "poster": "VID-20260730-WA0052-poster.jpg", "active": true },
+      { "id": "v3", "title": "Vidéo 3", "file": "VID-20260730-WA0053.mp4", "poster": "VID-20260730-WA0053-poster.jpg", "active": true },
+      { "id": "v4", "title": "Vidéo 4", "file": "VID-20260730-WA0054.mp4", "poster": "VID-20260730-WA0054-poster.jpg", "active": true },
+      { "id": "v5", "title": "Vidéo 5", "file": "VID-20260730-WA0055.mp4", "poster": "VID-20260730-WA0055-poster.jpg", "active": true },
+      { "id": "v6", "title": "Vidéo 6", "file": "VID-20260730-WA0056.mp4", "poster": "VID-20260730-WA0056-poster.jpg", "active": true },
+      { "id": "v7", "title": "Témoignage 1", "file": "VID-20260801-WA0038.mp4", "poster": "VID-20260801-WA0038-poster.jpg", "active": true },
+      { "id": "v8", "title": "Témoignage 2", "file": "VID-20260801-WA0041.mp4", "poster": "VID-20260801-WA0041-poster.jpg", "active": true },
+      { "id": "v9", "title": "Témoignage 3", "file": "VID-20260801-WA0042.mp4", "poster": "VID-20260801-WA0042-poster.jpg", "active": true },
+      { "id": "v10", "title": "Témoignage 4", "file": "VID-20260801-WA0043.mp4", "poster": "VID-20260801-WA0043-poster.jpg", "active": true },
+      { "id": "v11", "title": "Témoignage 5", "file": "VID-20260801-WA0044.mp4", "poster": "VID-20260801-WA0044-poster.jpg", "active": true },
+      { "id": "v12", "title": "Témoignage 6", "file": "VID-20260801-WA0045.mp4", "poster": "VID-20260801-WA0045-poster.jpg", "active": true },
+      { "id": "v13", "title": "Témoignage 7", "file": "VID-20260801-WA0046.mp4", "poster": "VID-20260801-WA0046-poster.jpg", "active": true },
+      { "id": "v14", "title": "Témoignage 8", "file": "VID-20260801-WA0047.mp4", "poster": "VID-20260801-WA0047-poster.jpg", "active": true },
+      { "id": "v15", "title": "Témoignage 9", "file": "VID-20260801-WA0048.mp4", "poster": "VID-20260801-WA0048-poster.jpg", "active": true },
+      { "id": "v16", "title": "Témoignage 10", "file": "VID-20260801-WA0049.mp4", "poster": "VID-20260801-WA0049-poster.jpg", "active": true },
+      { "id": "v17", "title": "Témoignage 11", "file": "VID-20260801-WA0050.mp4", "poster": "VID-20260801-WA0050-poster.jpg", "active": true }
     ],
     "eventLabel": "📅 Événement : Agbélé-Alafia Santé et Fertilité",
     "eventUrl": "https://facebook.com/events/s/agbele-alafia-sante-et-fertili/1687059961923750/",
@@ -76,21 +92,76 @@
     "postUrl": "https://www.facebook.com/61557355948928/posts/122245858208245198/?app=fbl"
   },
 
+  "temoignages": {
+    "eyebrow": "Ils nous ont écrit",
+    "title": "Des nouvelles qui nous touchent",
+    "intro": "De vrais messages reçus de nos clients et de nos revendeurs — nous les partageons tels qu'ils nous sont parvenus.",
+    "photo1": "temoignage-jumeaux.jpg",
+    "photo1_caption": "Une belle nouvelle reçue de l'une de nos familles.",
+    "photo2": "produits-flacons.jpg",
+    "photo2_caption": "Nos flacons Agbélé-Alafia, préparés au Bénin.",
+    "quotes": [
+      {
+        "id": "t1",
+        "text": "Un revendeur nous a écrit pour nous informer qu'après la première boîte de tisane, la cliente qu'il avait orientée vers nous est tombée enceinte le mois suivant, par la grâce de Dieu.",
+        "source": "Message reçu d'un revendeur",
+        "active": true
+      },
+      {
+        "id": "t2",
+        "text": "Une personne à qui nous avions envoyé nos produits nous a fait savoir qu'elle était tombée enceinte, confirmé la nuit précédente. Nous lui souhaitons une grossesse sereine.",
+        "source": "Message reçu d'un contact",
+        "active": true
+      }
+    ]
+  },
+
+  "posters": [
+    { "id": "p1", "title": "Prostate & Diabète", "tags": ["Prostate", "Diabète", "Hypertension"], "image": "poster-prostate-diabete.jpg",
+      "description": "Une formulation pensée pour accompagner le confort urinaire masculin, l'équilibre glycémique et une tension artérielle saine.", "active": true },
+    { "id": "p2", "title": "Dégraisseur", "tags": ["Digestion", "Silhouette"], "image": "poster-degraisseur.jpg",
+      "description": "Aide à soulager le gonflement du ventre, la constipation chronique et les maux de hanche liés au surpoids. Déconseillé aux femmes enceintes.", "active": true },
+    { "id": "p3", "title": "Santé & Fertilité chez la Femme", "tags": ["Fertilité", "Cycle féminin"], "image": "poster-fertilite-femme.jpg",
+      "description": "Un soutien pensé pour accompagner le cycle féminin : régularité des menstrues, confort pendant les règles et accompagnement des infections urinaires et vaginales. Déconseillé aux femmes enceintes.", "active": true },
+    { "id": "p4", "title": "Hémophar — Hémorroïdes", "tags": ["Confort digestif"], "image": "poster-hemophar.jpg",
+      "description": "Conçu pour soulager les brûlures, douleurs et inflammations liées aux hémorroïdes internes et externes.", "active": true },
+    { "id": "p5", "title": "Assurance Foyer", "tags": ["Vitalité", "Couple"], "image": "poster-assurance-foyer.jpg",
+      "description": "Un soutien naturel pensé pour la vitalité masculine et le bien-être du couple, en cas de fatigue générale ou de baisse d'énergie.", "active": true },
+    { "id": "p6", "title": "Infections", "tags": ["Immunité"], "image": "poster-infections-gamme.jpg",
+      "description": "Un soutien du système immunitaire face aux infections urinaires, aux démangeaisons, à la fatigue générale et aux troubles digestifs.", "active": true }
+  ],
+
+  "historique": {
+    "configured": false,
+    "title": "Historique & Origine",
+    "founderName": "",
+    "founderRole": "Fondateur — Cabinet Agbélé-Alafia",
+    "founderOrigin": "",
+    "founderPhoto": "",
+    "story": ""
+  },
+
   "contact": {
     "eyebrow": "Contact",
     "title": "Contactez-nous et Commandez",
     "intro": "Notre équipe est là pour vous accompagner sereinement vers votre projet de famille.",
-    "phone1": "+229 01 57 35 36 35",
-    "phone2": "01 96 56 37 89",
+    "phone1": "+229 96 56 37 89",
+    "phone2": "95 59 04 94",
     "whatsapp": "57353635",
     "email": "agbelealafia@gmail.com",
-    "deliveryText": "Livraison possible ! Appelez le 0157353635.",
+    "deliveryText": "Livraison possible ! Appelez-nous pour organiser votre commande.",
     "facebook": "https://www.facebook.com/profile.php?id=61557355948928",
     "address": "Agla, Rue Pharmacie des Archanges, 3ème maison à étages à gauche, Cotonou, Bénin, 00229"
   },
 
   "footer": {
     "text": "Cabinet Agbélé-Alafia : Pour que la vie continue.",
-    "legal": "© 2026 Cabinet Agbélé - Alafia. Tous droits réservés."
+    "legal": "© 2026 Cabinet Agbélé - Alafia — Produit au Bénin par DEGRE SERVICE BÉNIN SARL — N° IFU : 3202113342966. Tous droits réservés."
+  },
+
+  "images": {
+    "logo": "logo.jpg",
+    "fertilite": "fertilite.jpg",
+    "nature": "nature.jpg"
   }
 }

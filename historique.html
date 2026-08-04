@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Historique &amp; Origine | Cabinet Agbélé - Alafia</title>
+<meta name="description" content="Découvrez l'histoire et le fondateur du Cabinet Agbélé-Alafia, à Cotonou, Bénin.">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#FCFDFA" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12201A" media="(prefers-color-scheme: dark)">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <img src="logo.jpg" alt="Logo Cabinet Agbélé-Alafia" class="brand-logo">
+      <span class="brand-name">Cabinet Agbélé - Alafia</span>
+    </a>
+    <div class="header-actions">
+      <button class="icon-btn" id="theme-toggle" type="button" aria-label="Changer de thème">
+        <svg class="icon" id="theme-icon" aria-hidden="true"><use href="#icon-moon"/></svg>
+      </button>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="site-nav">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav">
+        <a href="index.html#accueil">Accueil</a>
+        <a href="index.html#solutions">Nos Solutions</a>
+        <a href="galerie.html">Nos Gammes</a>
+        <a href="historique.html" class="active">Notre Histoire</a>
+        <a href="index.html#contact" class="nav-cta">Contact</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<svg style="display:none" aria-hidden="true">
+  <symbol id="icon-sun" viewBox="0 0 24 24"><path d="M12 4.5a1 1 0 0 1-1-1V2a1 1 0 1 1 2 0v1.5a1 1 0 0 1-1 1zm0 15a1 1 0 0 1 1 1V22a1 1 0 1 1-2 0v-1.5a1 1 0 0 1 1-1zm9.5-7.5a1 1 0 0 1-1 1H19a1 1 0 1 1 0-2h1.5a1 1 0 0 1 1 1zm-17 0a1 1 0 0 1-1 1H2a1 1 0 1 1 0-2h1.5a1 1 0 0 1 1 1zm14.6-6.6a1 1 0 0 1 0 1.4l-1.1 1.1a1 1 0 1 1-1.4-1.4l1.1-1.1a1 1 0 0 1 1.4 0zM6.4 17.6a1 1 0 0 1 0 1.4l-1.1 1.1a1 1 0 1 1-1.4-1.4l1.1-1.1a1 1 0 0 1 1.4 0zm11.2 0 1.1 1.1a1 1 0 0 1-1.4 1.4l-1.1-1.1a1 1 0 1 1 1.4-1.4zM6.4 6.4 5.3 5.3a1 1 0 0 1 1.4-1.4l1.1 1.1a1 1 0 1 1-1.4 1.4zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10z"/></symbol>
+  <symbol id="icon-moon" viewBox="0 0 24 24"><path d="M20.7 14.9a8.5 8.5 0 0 1-10.6-10.6c.2-.6-.4-1.2-1-1a10 10 0 1 0 12.6 12.6c.6-.2.6-1 0-1z"/></symbol>
+</svg>
+
+<main>
+  <section class="page-hero container">
+    <a href="index.html" class="back-link">← Retour à l'accueil</a>
+    <p class="eyebrow">Notre histoire</p>
+    <h1 id="hist-title">Historique &amp; Origine</h1>
+  </section>
+
+  <section class="container" style="padding-bottom:80px;">
+    <div id="hist-placeholder" class="placeholder-notice" style="display:none;">
+      Cette page attend encore la photo, le nom et le récit du fondateur. Une fois ces éléments transmis (par vous, via l'administrateur du site), ils s'afficheront ici automatiquement — aucune intervention sur le code ne sera nécessaire.
+    </div>
+
+    <div id="hist-content" style="display:none;">
+      <div class="founder-hero">
+        <img id="hist-photo" class="founder-photo" src="" alt="">
+        <div>
+          <h2 class="founder-name" id="hist-name"></h2>
+          <p class="founder-role" id="hist-role"></p>
+          <p class="founder-origin" id="hist-origin"></p>
+        </div>
+      </div>
+      <div class="origin-story" id="hist-story"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <img src="logo.jpg" alt="Logo Cabinet Agbélé-Alafia" class="footer-logo">
+  <p class="footer-text">Cabinet Agbélé-Alafia : Pour que la vie continue.</p>
+  <p class="footer-legal" id="footer-legal">© 2026 Cabinet Agbélé - Alafia. Tous droits réservés.</p>
+</footer>
+
+<script>
+function setText(id,val){ const el=document.getElementById(id); if(el && val) el.textContent=val; }
+function renderPage(d){
+  try{
+    setText('footer-legal', d.footer && d.footer.legal);
+    const h = d.historique || {};
+    setText('hist-title', h.title);
+    if(h.configured && h.founderName && h.founderPhoto && h.story){
+      document.getElementById('hist-content').style.display = 'block';
+      document.getElementById('hist-placeholder').style.display = 'none';
+      const photo = document.getElementById('hist-photo');
+      photo.src = h.founderPhoto; photo.alt = h.founderName;
+      setText('hist-name', h.founderName);
+      setText('hist-role', h.founderRole);
+      setText('hist-origin', h.founderOrigin);
+      const storyEl = document.getElementById('hist-story');
+      storyEl.innerHTML = '';
+      (h.story||'').split(/\n{2,}/).forEach(p => { if(p.trim()){ const el=document.createElement('p'); el.textContent=p.trim(); storyEl.appendChild(el); } });
+    } else {
+      document.getElementById('hist-placeholder').style.display = 'block';
+      document.getElementById('hist-content').style.display = 'none';
+    }
+  }catch(e){ console.error(e); document.getElementById('hist-placeholder').style.display = 'block'; }
+}
+fetch('data.json',{cache:'no-store'}).then(r=>r.json()).then(renderPage).catch(()=>renderPage({}));
+
+const THEME_KEY='agbele-alafia-theme';
+function applyTheme(t){ document.documentElement.setAttribute('data-theme',t); const u=document.querySelector('#theme-icon use'); if(u) u.setAttribute('href', t==='dark'?'#icon-sun':'#icon-moon'); }
+let st=null; try{ st=localStorage.getItem(THEME_KEY);}catch(e){}
+applyTheme(st || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark':'light'));
+document.getElementById('theme-toggle').addEventListener('click', () => {
+  const next = document.documentElement.getAttribute('data-theme')==='dark' ? 'light':'dark';
+  applyTheme(next); try{ localStorage.setItem(THEME_KEY,next); }catch(e){}
+});
+const navToggle=document.getElementById('nav-toggle'), siteNav=document.getElementById('site-nav');
+navToggle.addEventListener('click', () => { const o=siteNav.classList.toggle('open'); navToggle.setAttribute('aria-expanded',String(o)); });
+if('serviceWorker' in navigator){ window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(()=>{})); }
+</script>
+</body>
+</html>
